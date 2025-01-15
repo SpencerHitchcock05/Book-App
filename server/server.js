@@ -7,6 +7,8 @@ const PORT = 5000;
 
 app.get("/books", async (req, res) => {
     const prompt = req.body;
+
+    console.log("received");
 })
 
 

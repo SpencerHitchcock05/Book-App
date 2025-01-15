@@ -1,13 +1,20 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
 
+  async function serverFetch() {
+
+    fetch("https://localhost:5000/books")
+    .then(resp => resp.text)
+    .then(data => {console.log(data)})
+
+    
+  }
+
   return (
     <>
-      
+      <button onClick={serverFetch}></button>
     </>
   )
 }
