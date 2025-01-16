@@ -1,14 +1,15 @@
 const express = require("express");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-
+const cors = require('cors');
 
 const app = express();
 const PORT = 5000;
 
-app.get("/books", async (req, res) => {
-    const prompt = req.body;
+app.use(cors({origin: '*', methods: ['GET']}))
 
+app.get("/", (req, res) => {
     console.log("received");
+    res.json({ message: "Hello from the server!" });
 })
 
 

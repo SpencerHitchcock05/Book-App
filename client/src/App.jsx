@@ -5,9 +5,7 @@ function App() {
 
   async function serverFetch() {
 
-    fetch("https://localhost:5000/books")
-    .then(resp => resp.text)
-    .then(data => {console.log(data)})
+    const resp = await fetch("http://localhost:5000")
 
     
   }
