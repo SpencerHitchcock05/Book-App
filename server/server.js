@@ -2,7 +2,7 @@ const express = require("express");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const cors = require('cors');
 
-const genAI = new GoogleGenerativeAI("AIzaSyAewepeYHVjfAM8_aaXZ1ZP_heiuadXKRs");
+const genAI = new GoogleGenerativeAI("");
 
 const app = express();
 const PORT = 5000;
