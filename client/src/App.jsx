@@ -1,13 +1,20 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './App.css'
 
 function App() {
 
   const [suggestions, setSuggestions] = useState();
+  const text = useRef();
 
   async function serverFetch() {
 
-    const resp = await fetch("http://localhost:5000/books?text=fantasy")
+    const resp = await fetch("http://localhost:5000/books", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json" 
+      },
+      body: JSON.stringify({text: text.current.value})
+    })
 
     const data = resp.json()
 
@@ -23,6 +30,7 @@ function App() {
 
   return (
     <>
+      <input ref={text} type="text" name="" id="" />
       <button onClick={serverFetch}></button>
       <div>
         {JSON.stringify(suggestions)}
