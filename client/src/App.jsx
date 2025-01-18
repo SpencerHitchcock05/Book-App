@@ -7,12 +7,13 @@ function App() {
 
   async function serverFetch() {
 
-    const resp = await fetch("http://localhost:5000/books")
+    const resp = await fetch("http://localhost:5000/books?text=fantasy")
 
     const data = resp.json()
 
     data.then(resp => {
-      setSuggestions(JSON.stringify(resp))
+      setSuggestions(resp)
+      console.log(resp)
     })
 
     
@@ -24,7 +25,17 @@ function App() {
     <>
       <button onClick={serverFetch}></button>
       <div>
-        {suggestions}
+        {JSON.stringify(suggestions)}
+
+        {/* {suggestions && suggestions.map((suggestion) => {
+          return (
+            <div key={suggestion.title}>
+              {JSON.stringify(suggestion)}
+            </div>  
+          )
+        })
+        } */}
+        
       </div>
     </>
   )

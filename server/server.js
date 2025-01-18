@@ -15,11 +15,13 @@ app.use(cors({origin: '*', methods: ['GET']}))
 
 app.get("/books", async (req, res) => {
 
-    console.log("received")
+    const parameter = req.params.text;
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", generation_config: {"response_mime_type": "application/json"} });
     
-    const prompt = "give me some book recomendations in a JSON file format"
+    console.log(parameter)
+
+    const prompt = `give me some ${parameter} books in a JSON file format where the json is an array and each element is a book. and no comment code.`;
 
     const result = await model.generateContent(prompt);
 
