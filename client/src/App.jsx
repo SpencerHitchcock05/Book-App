@@ -1,5 +1,7 @@
-import { useRef, useState } from 'react'
-import './App.css'
+import { useRef, useState } from 'react';
+import './App.css';
+import Nav from './Nav.jsx';
+import Content from "./Content.jsx"
 
 function App() {
 
@@ -30,6 +32,8 @@ function App() {
 
   return (
     <>
+      <Nav/>
+      <Content/>
       <input ref={text} type="text" name="" id="" />
       <button onClick={serverFetch}></button>
       <div>
