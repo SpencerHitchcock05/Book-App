@@ -59,6 +59,15 @@ body {
     
 }
 
+.user-prompts {
+    background-color: red;
+    display: flex;
+}
+
+.user-prompt {
+    margin: 5px;
+}
+
 .param-input {
     font-size: 1.4rem;
 }
