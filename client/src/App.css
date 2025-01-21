@@ -62,3 +62,13 @@ body {
 .param-input {
     font-size: 1.4rem;
 }
+
+.prompt-button {
+    background-color: #355e35;
+    color: white;
+
+    border: none;
+    border-radius: 4px;
+
+    padding: 10px 30px;
+}
