@@ -19,9 +19,7 @@ function Params(props) {
 
         console.log("button")
         console.log(genres)
-        setGenres(prev => {return [...prev, genreRef.current.value]})
-        
-        //genreRef.current.value = ""
+        setGenres(prev => {return [...prev, genreRef.current.value]})  
     }
 
     useEffect(() => {
@@ -36,7 +34,7 @@ function Params(props) {
         <>
         
         <div id="params">
-            <div>
+            <div className="user-input">
                 <div className="user-prompts">
                     {genres.map((genre, index) => {
                         return (
@@ -52,13 +50,23 @@ function Params(props) {
                     </div>
                 </form>
             </div>
-            <form className="param-form" action="/" method="post">
-                <label htmlFor="books">list books in a style you would like to read more of?:</label>
-                <div >
-                    <input ref={booksRef} type="text" name="books" className="param-input" />
-                    <button  className="prompt-button">Add Book</button>
+
+            <div  className="user-input">
+                <div className="user-prompts">
+                    {genres.map((genre, index) => {
+                        return (
+                            <div className="user-prompt" key={index}>{genre}</div>
+                        )
+                    })}
                 </div>
-            </form>
+                <form className="param-form" action="/" method="post">
+                    <label htmlFor="books">list books in a style you would like to read more of?:</label>
+                    <div>
+                        <input ref={booksRef} type="text" name="books" className="param-input" />
+                        <button  className="prompt-button">Add Book</button>
+                    </div>
+                </form>
+            </div>
         
         </div>
         
