@@ -6,6 +6,10 @@ import Params from './Params.jsx'
 function Content() {
 
     const [suggestions, setSuggestions] = useState();
+    const [prompts, setPrompts] = useState({
+      "genre" : [],
+      "book" : []
+    })
     const text = useRef();
 
     async function serverFetch() {
@@ -15,7 +19,7 @@ function Content() {
       headers: {
         "Content-Type": "application/json" 
       },
-      body: JSON.stringify({text: text.current.value})
+      body: JSON.stringify({text: prompts})
     })
 
     const data = resp.json()
@@ -36,7 +40,10 @@ function Content() {
         
         <div id="content-container">
             <div id="content">
-                <Params handleSearch={setSuggestions}/>
+                {JSON.stringify(prompts)}
+                <Params type={"genre"} question={"which book genres you would like to see?:"} setPrompts={setPrompts}/>
+                <Params type={"book"} question={"which books have you enjoyed in the past?:"} setPrompts={setPrompts}/>
+
             </div>
 
         </div>
