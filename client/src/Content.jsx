@@ -45,7 +45,10 @@ function Content() {
                 <Params type={"book"} question={"which books have you enjoyed in the past?:"} setPrompts={setPrompts}/>
 
             </div>
-
+            <div>
+              <button className='prompt-button' id='search-button' type='button' onClick={serverFetch}>Search</button>
+            </div>
+            {JSON.stringify(suggestions)}
         </div>
 
         </>
