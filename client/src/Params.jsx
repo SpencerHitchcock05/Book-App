@@ -16,16 +16,18 @@ function Params(props) {
         e.preventDefault()
 
         setTypes(prev => {return [...prev, genreRef.current.value]}) 
+        
+    }
+
+    useEffect(() => {
+        genreRef.current.value = "";
+
         props.setPrompts(prev => {
             const next = {...prev};
 
             next[type] = types
             return next
         }) 
-    }
-
-    useEffect(() => {
-        genreRef.current.value = ""
     }, [types])
 
 
