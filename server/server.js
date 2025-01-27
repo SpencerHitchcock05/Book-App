@@ -20,9 +20,32 @@ app.post("/books", async (req, res) => {
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", generation_config: {"response_mime_type": "application/json"} });
     
-    
 
-    const prompt = `give me some ${parameter} books in a JSON file format where the json is an array and each element is a book. and no comment code.`;
+    const prompt = `
+    
+        You are giving book suggestions in an app based on the preferences of a user. 
+        this user has already inputted what some of they're preferences are and they are the following
+
+        the user wants to see books that are from the following genres: ${parameter.genre}
+
+        the user wants books that similar to the following books: ${parameter.book} 
+
+
+        please give 10 to 20 recomendations based off of these parameters, try to make the books interesting and something that the user has not already read
+
+        please give these book recomendations in the form a JSON file. 
+
+        use the following JSON format:
+
+        Recomendation = {'title': string, 'author' : string, 'description': string}
+        Return: Array<Recomendation>
+
+        please don't include any comment code
+        
+        thank you very much.
+    
+    
+    `;
 
     console.log(parameter);
 
