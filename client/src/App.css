@@ -90,3 +90,22 @@ body {
 
     padding: 10px 30px;
 }
+
+
+.card-container {
+    position: absolute;
+    width: 80%;
+    background-color: red;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: blue;
+}
+
+.d-none {
+    display: none;
+}

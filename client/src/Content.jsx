@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import Params from './Params.jsx'
+import Result from './Result.jsx';
 
 
 
@@ -50,8 +51,11 @@ function Content() {
               <button className='prompt-button' id='search-button' type='button' onClick={serverFetch}>Search</button>
             </div>
             </>}
+
+            {suggestions && <>
+              <Result suggestions={suggestions} />
+            </>}
             
-            {JSON.stringify(suggestions)}
         </div>
 
         </>
