@@ -32,7 +32,7 @@ function Card(props) {
 
                 setTranslation(trans)
                 
-                if (Math.abs(trans) > 300) {
+                if (Math.abs(trans) > 200) {
                     disappear()
                 }
             }
@@ -48,7 +48,7 @@ function Card(props) {
     return (
     <>
         <div className="card-container">
-            <div ref={cardRef} style={{transform: `translateX(${translation}px)`, transition: "transform 0.2s ease-in-out"}} className={`card ${hidden? "d-none" : ""}`}>
+            <div ref={cardRef} style={{transform: `translateX(${translation}px)`, transition: `${translation == 0? "transform 0.2s ease-in-out" : ""}`}} className={`card ${hidden? "d-none" : ""}`}>
                 <h2>{suggestion.title}</h2>
                 <h4>{suggestion.author}</h4>
                 <p>{suggestion.description}</p>

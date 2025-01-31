@@ -104,6 +104,11 @@ body {
 
 .card {
     background-color: blue;
+    min-height: 50vh;
+
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
 }
 
 .d-none {
