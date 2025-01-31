@@ -95,7 +95,8 @@ body {
 .card-container {
     position: absolute;
     width: 80%;
-    background-color: red;
+
+    margin-top: 5%;
 
     display: flex;
     justify-content: center;
@@ -103,12 +104,16 @@ body {
 }
 
 .card {
-    background-color: blue;
+    background-color: #355e35;
     min-height: 50vh;
+    width: 40vw;
+    padding: 2%;
 
     display: flex;
     justify-content: end;
     flex-direction: column;
+
+    border-radius: 10px;
 }
 
 .d-none {
