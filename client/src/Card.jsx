@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react"
 
 function Card(props) {
 
-    const [hidden, setHidden] = useState(false)
+    const disappearThreshold = 200
+    const [disappearing, setDisappearing] = useState(false)
     const [translation, setTranslation] = useState(0)
     const cardRef = useRef()
 
@@ -17,12 +18,16 @@ function Card(props) {
         card.addEventListener("mousedown", (e) => {
             mouseDown.current = true;
             mouseDownLocation.current = e.clientX
-            console.log(lastLocation.current)
         })
 
         card.addEventListener("mouseup", (e) => {
+
+            if (mouseDown.current) {
+                setTranslation(0)
+            }
+                        
             mouseDown.current = false
-            setTranslation(0)
+            
         })
 
         card.addEventListener("mousemove", (e) => {
@@ -32,8 +37,9 @@ function Card(props) {
 
                 setTranslation(trans)
                 
-                if (Math.abs(trans) > 200) {
-                    disappear()
+                if (Math.abs(trans) > disappearThreshold) {
+                    setDisappearing(true)
+                    mouseDown.current = false
                 }
             }
         })
@@ -41,17 +47,16 @@ function Card(props) {
 
     const suggestion = props.suggestion
 
-    const disappear = () => {
-        setHidden(true)
-    }
+
   
     return (
     <>
         <div className="card-container">
-            <div ref={cardRef} style={{transform: `translateX(${translation}px)`, transition: `${translation == 0? "transform 0.2s ease-in-out" : ""}`}} className={`card ${hidden? "d-none" : ""}`}>
+            <div ref={cardRef} style={{transform: `translate(${translation}px, ${Math.abs(translation) / 5}px) rotate(${translation / 20}deg)`, transition: `${translation == 0? "transform 0.2s ease-in-out" : ""}`}} className={`card ${disappearing? "disappearing" : ""}`}>
                 <h2>{suggestion.title}</h2>
                 <h4>{suggestion.author}</h4>
                 <p>{suggestion.description}</p>
+                {Math.abs(translation)}
             </div>
         </div>
     </>

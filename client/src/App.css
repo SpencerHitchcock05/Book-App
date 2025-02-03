@@ -109,6 +109,8 @@ body {
     width: 40vw;
     padding: 2%;
 
+    color: white;
+
     display: flex;
     justify-content: end;
     flex-direction: column;
@@ -118,4 +120,23 @@ body {
 
 .d-none {
     display: none;
+}
+
+.disappearing {
+    animation: swipe-right 3s forwards;
+}
+
+
+@keyframes swipe-right {
+
+    0% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+
+    100% {
+        opacity: 0;
+        margin-top: 100px;
+    }
+    
 }
