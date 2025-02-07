@@ -123,9 +123,17 @@ body {
 }
 
 .disappearing {
-    animation: swipe-right 1s forwards;
+    animation: swipe-right .7s forwards;
+    pointer-events: none;
 }
 
+.card {
+    user-select: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+  }
+  
 
 @keyframes swipe-right {
 
@@ -133,6 +141,7 @@ body {
         opacity: 1;
         margin-top: 0px;
     }
+
 
     100% {
         opacity: 0;
