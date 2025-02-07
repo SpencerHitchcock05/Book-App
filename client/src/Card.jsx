@@ -43,6 +43,10 @@ function Card(props) {
                 }
             }
         })
+
+        card.addEventListener("animationend", () => {
+            card.classList.add("d-none")
+        })
     }, [])
 
     const suggestion = props.suggestion
