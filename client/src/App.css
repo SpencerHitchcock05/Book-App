@@ -135,10 +135,11 @@ body {
   }
 
 #loading-icon {
-    margin: 30vh;
-    width: 10vw;
-    height: 10vw;
-    background-color: red;
+    margin-top: 30vh;
+    margin-bottom: 30px;
+    width: 100px;
+    height: 100px;
+    background-color: #355e35;
     animation: spin 2s infinite;
 }
   

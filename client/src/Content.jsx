@@ -56,8 +56,7 @@ function Content() {
             </div>
             </>}
 
-            {/* {searching && <LoadingIcon/>} */}
-            <LoadingIcon/>
+            {searching && <LoadingIcon/>}
 
             {suggestions && <>
               <Result suggestions={suggestions} />
