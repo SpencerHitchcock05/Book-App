@@ -60,7 +60,6 @@ function Card(props) {
                 <h2>{suggestion.title}</h2>
                 <h4>{suggestion.author}</h4>
                 <p>{suggestion.description}</p>
-                {Math.abs(translation)}
             </div>
         </div>
     </>

@@ -106,7 +106,7 @@ body {
 .card {
     background-color: #355e35;
     min-height: 50vh;
-    width: 40vw;
+    max-width: 400px;
     padding: 2%;
 
     color: white;
@@ -116,6 +116,11 @@ body {
     flex-direction: column;
 
     border-radius: 10px;
+
+    user-select: none; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
 }
 
 .d-none {
@@ -127,12 +132,6 @@ body {
     pointer-events: none;
 }
 
-.card {
-    user-select: none; 
-    -webkit-user-select: none; 
-    -moz-user-select: none; 
-    -ms-user-select: none; 
-  }
 
 #loading-icon {
     margin-top: 30vh;
