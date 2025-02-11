@@ -133,7 +133,26 @@ body {
     -moz-user-select: none; 
     -ms-user-select: none; 
   }
+
+#loading-icon {
+    margin: 30vh;
+    width: 10vw;
+    height: 10vw;
+    background-color: red;
+    animation: spin 2s infinite;
+}
   
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(359deg);
+    }
+    
+}
 
 @keyframes swipe-right {
 

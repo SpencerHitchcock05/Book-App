@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
-import Params from './Params.jsx'
+import Params from './Params.jsx';
 import Result from './Result.jsx';
+import LoadingIcon from './LoadingIcon.jsx'
 
 
 
@@ -55,7 +56,8 @@ function Content() {
             </div>
             </>}
 
-            {searching && <>Loading</>}
+            {/* {searching && <LoadingIcon/>} */}
+            <LoadingIcon/>
 
             {suggestions && <>
               <Result suggestions={suggestions} />
