@@ -3,6 +3,10 @@ import { useEffect, useRef, useState } from "react"
 
 function Card(props) {
 
+    const setAccepted = props.setAccepted
+    const suggestion = props.suggestion
+
+
     const disappearThreshold = 200
     const [disappearing, setDisappearing] = useState(false)
     const [translation, setTranslation] = useState(0)
@@ -40,6 +44,10 @@ function Card(props) {
                 if (Math.abs(trans) > disappearThreshold) {
                     setDisappearing(true)
                     mouseDown.current = false
+
+                    if (trans > 0) {
+                        setAccepted(prev => {return [...prev, suggestion]})
+                    }
                 }
             }
         })
@@ -49,7 +57,6 @@ function Card(props) {
         })
     }, [])
 
-    const suggestion = props.suggestion
 
 
   
