@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react"
 function Card(props) {
 
     const setAccepted = props.setAccepted
+    const setCardsLeft = props.setCardsLeft
     const suggestion = props.suggestion
 
 
@@ -48,6 +49,8 @@ function Card(props) {
                     if (trans > 0) {
                         setAccepted(prev => {return [...prev, suggestion]})
                     }
+                    
+                    setCardsLeft(prev => prev - 1)
                 }
             }
         })
