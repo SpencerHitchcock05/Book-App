@@ -133,9 +133,8 @@ body {
 }
 
 .accepted {
-    font-size: 2rem;
+    /* font-size: 2rem; */
     width: 100%;
-    height:40px;
     background-color: #355e35;
     color: white;
     border-radius: 10px;

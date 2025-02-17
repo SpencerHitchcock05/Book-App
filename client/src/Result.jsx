@@ -29,8 +29,13 @@ function Result(props) {
             }
 
             {cardsLeft <= 0 && <>
+                <h1>These are the books that peaked your interest</h1>
                 {accepted.map((suggestion, index) => {
-                    return (<div className='accepted' key={index}>{suggestion.title}</div>)
+                    return (
+                        <div className='accepted' key={index}>
+                            <h2>{suggestion.title}</h2>
+                            <p>{suggestion.description}</p>
+                        </div>)
                 })}
             
             </>}
