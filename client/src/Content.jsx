@@ -32,13 +32,20 @@ function Content() {
       data.then(resp => {
         setSearching(false)
         setSuggestions(resp)
-        console.log(resp)
+        fetchBookInfo(resp)
       })
+    }
 
-    
-
-    
-  }
+    async function fetchBookInfo(books) {
+      console.log(books)
+      const resp = await fetch("http://localhost:5000/booksInfo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json" 
+        },
+        body: JSON.stringify({books: books})
+      })
+    }
 
 
     return (

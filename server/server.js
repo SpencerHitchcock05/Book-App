@@ -1,6 +1,7 @@
 const express = require("express");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const cors = require('cors');
+const puppeteer = require('puppeteer');
 require('dotenv').config();
 
 const apiKey = process.env.GEMINI_KEY;
@@ -47,7 +48,6 @@ app.post("/books", async (req, res) => {
     
     `;
 
-    console.log(parameter);
 
     const result = await model.generateContent(prompt);
 
@@ -57,6 +57,26 @@ app.post("/books", async (req, res) => {
 
 
     res.json(jsonResp);
+})
+
+app.post("/booksInfo", async (req, res) => {
+
+    const books = req.body.books;
+
+    const browser = await puppeteer.launch({ headless: true });
+    const page = await browser.newPage();
+
+    for (let i = 0; i < books.length; i++) {
+        try {
+                        
+            console.log(books[i])
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    await browser.close()
+
 })
 
 
