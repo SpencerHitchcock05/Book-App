@@ -53,23 +53,36 @@ app.post("/books", async (req, res) => {
 
     const text = result.response.text()
     
-    const jsonResp = JSON.parse(text.substring(7, text.length - 4));
+    const books = JSON.parse(text.substring(7, text.length - 4));
 
-
-    res.json(jsonResp);
-})
-
-app.post("/booksInfo", async (req, res) => {
-
-    const books = req.body.books;
 
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    for (let i = 0; i < books.length; i++) {
+    for (let i = books.length - 1; i >= 0; i--) {
         try {
-                        
-            console.log(books[i])
+                    
+            const searchUrl = `https://www.amazon.ca/s?k=${encodeURIComponent(books[i].title)}`;
+
+            await page.goto(searchUrl, { waitUntil: 'domcontentloaded' })
+
+            await page.waitForSelector('.s-main-slot');
+
+            const bookList = await page.$$('.s-main-slot .s-result-item');
+
+            if (!bookList) {
+                console.log('No results found');
+                await browser.close();
+                return null;
+            }
+
+            const book = bookList[1]
+
+            const image = await book.$eval('.s-image', el => el.src).catch(() => 'N/A');
+
+            books[i] = {...books[i], image: image}
+
+            console.log(image)
         } catch (err) {
             console.log(err)
         }
@@ -77,7 +90,33 @@ app.post("/booksInfo", async (req, res) => {
 
     await browser.close()
 
+    
+    console.log(books)
+
+    res.json(books);
+
+
 })
+
+// app.post("/booksInfo", async (req, res) => {
+
+//     const books = req.body.books;
+
+//     const browser = await puppeteer.launch({ headless: true });
+//     const page = await browser.newPage();
+
+//     for (let i = 0; i < books.length; i++) {
+//         try {        
+//             console.log(books[i])
+//         } catch (err) {
+//             console.log(err)
+//         }
+//     }
+
+//     await browser.close()
+
+// })
+
 
 
 app.listen(PORT, () => {

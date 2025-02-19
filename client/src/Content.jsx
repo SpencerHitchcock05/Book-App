@@ -32,7 +32,6 @@ function Content() {
       data.then(resp => {
         setSearching(false)
         setSuggestions(resp)
-        fetchBookInfo(resp)
       })
     }
 
