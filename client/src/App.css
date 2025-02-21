@@ -96,7 +96,7 @@ body {
     position: absolute;
     width: 80%;
 
-    margin-top: 5%;
+    margin-top: 1%;
 
     display: flex;
     justify-content: center;
@@ -104,10 +104,10 @@ body {
 }
 
 .card {
-    background-color: #355e35;
-    min-height: 50vh;
-    max-width: 400px;
-    padding: 2%;
+    height: 80vh;
+    max-width: 500px;
+
+    background-size: cover;
 
     color: white;
 
@@ -121,6 +121,16 @@ body {
     -webkit-user-select: none; 
     -moz-user-select: none; 
     -ms-user-select: none; 
+}
+
+.card-content {
+    box-sizing: border-box;
+
+    background-image: linear-gradient(transparent, #000000 75%);
+    width: 100%;
+    padding: 10px;
+    padding-top: 100px;
+    border-radius: 10px;
 }
 
 .d-none {

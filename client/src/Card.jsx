@@ -66,11 +66,13 @@ function Card(props) {
     return (
     <>
         <div className="card-container">
-            <div ref={cardRef} style={{transform: `translate(${translation}px, ${Math.abs(translation) / 5}px) rotate(${translation / 20}deg)`, transition: `${translation == 0? "transform 0.2s ease-in-out" : ""}`}} className={`card ${disappearing? "disappearing" : ""}`}>
-                <h2>{suggestion.title}</h2>
-                <h4>{suggestion.author}</h4>
-                <p>{suggestion.description}</p>
-                <img src={suggestion.image} alt="" />
+            <div ref={cardRef} style={{backgroundImage: `url(${suggestion.image})`, transform: `translate(${translation}px, ${Math.abs(translation) / 5}px) rotate(${translation / 20}deg)`, transition: `${translation == 0? "transform 0.2s ease-in-out" : ""}`}} className={`card ${disappearing? "disappearing" : ""}`}>
+                <div className="card-content">
+                    <h2>{suggestion.title}</h2>
+                    <h4>{suggestion.author}</h4>
+                    <p>{suggestion.description}</p>
+                    {/* <img src={suggestion.image} alt="" /> */}
+                </div>
             </div>
         </div>
     </>
