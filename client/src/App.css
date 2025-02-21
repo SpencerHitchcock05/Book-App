@@ -1,7 +1,12 @@
+:root {
+    --light-color: #481468;
+    --dark-color: #0d021f;
+}
+
 body {
     width: 100vw;
     height: 100hv;
-    background-color: #eaffea;
+    background-color: var(--dark-color);
     overflow-x: hidden;
     margin: 0;
 }
@@ -9,7 +14,10 @@ body {
 #nav-bar {
     width: 100%;
     height: 75px;
+    background-color: var(--light-color);
+    color:white;
     border-bottom: 1px solid black;
+    
 
     display: flex;
     justify-content: space-between;
@@ -41,6 +49,7 @@ body {
 #content {
     width: 80vw;
     min-height: 20vh;
+    color: white;
 }
 
 #params {
@@ -57,9 +66,21 @@ body {
 
     display: flex;
 
-    flex-direction: column;
-    
+    flex-direction: column;   
 }
+
+.param-form > label {
+    margin: 3px;
+    font-size: 1.3rem;
+}
+
+.param-form-input {
+
+    display: flex;
+    gap: 20px;
+}
+
+
 .user-input {
     margin: 3%;
 }
@@ -69,7 +90,7 @@ body {
 }
 
 .user-prompt {
-    background-color: #355e35;
+    background-color: var(--light-color);
     margin-right: 5px;
     padding: 5px 10px;
     border-radius: 4px;
@@ -82,13 +103,14 @@ body {
 }
 
 .prompt-button {
-    background-color: #355e35;
+    background-color: var(--light-color);
     color: white;
 
     border: none;
     border-radius: 4px;
+    font-size: 1rem;
 
-    padding: 10px 30px;
+    padding: 10px 25px;
 }
 
 

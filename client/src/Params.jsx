@@ -48,7 +48,7 @@ function Params(props) {
                 </div>
                 <form onSubmit={addType} className="param-form" method="post">
                     <label htmlFor="genre">{props.question}<br/></label>
-                    <div>
+                    <div className="param-form-input">
                         <input ref={genreRef} type="text" name="genre" className="param-input" />
                         <button className="prompt-button">Add {props.type}</button>
                     </div>
