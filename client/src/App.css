@@ -1,5 +1,5 @@
 :root {
-    --light-color: #481468;
+    --light-color: #3d1158;
     --dark-color: #0d021f;
 }
 
@@ -33,9 +33,6 @@ body {
 .nav-link {
 
 }
-
-
-
 
 #content-container {
     width: 100vw;
@@ -164,14 +161,55 @@ body {
     pointer-events: none;
 }
 
+.results-accepted {
+    width: 100%;
+
+    flex-direction: column;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .accepted {
     /* font-size: 2rem; */
-    width: 100%;
-    background-color: #355e35;
+    width: 60%;
+    background-color: var(--light-color);
     color: white;
     border-radius: 10px;
-    padding: 10px;
-    margin-top: 5px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    margin: 20px;
+}
+
+.accepted-content {
+    display: flex;
+}
+
+.accepted-text {
+    padding: 15px;
+    font-size: 1.2rem;
+}
+
+.accepted-price {
+    margin: 20px;
+    font-size: 2rem;
+}
+
+.accepted-link {
+    margin: 20px;
+}
+
+.accepted-link:link {
+    color: white;
+}
+
+.accepted-link:visited {
+    color: white;
+}.accepted-link:hover {
+    color: white;
+}.accepted-link:active {
+    color: white;
 }
 
 #loading-icon {
@@ -179,7 +217,7 @@ body {
     margin-bottom: 30px;
     width: 100px;
     height: 100px;
-    background-color: #355e35;
+    background-color: var(--light-color);
     animation: spin 2s infinite;
 }
 

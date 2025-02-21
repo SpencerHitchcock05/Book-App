@@ -38,7 +38,7 @@ app.post("/books", async (req, res) => {
 
         use the following JSON format:
 
-        Recomendation = {'title': string, 'author' : string, 'description': string}
+        Recomendation = {'title': string, 'author' : string, 'description': string, 'longDescription': string}
         Return: Array<Recomendation>
 
         please don't include any comment code
@@ -55,6 +55,8 @@ app.post("/books", async (req, res) => {
     
     const books = JSON.parse(text.substring(7, text.length - 4));
 
+    console.log(books)
+
 
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
@@ -63,6 +65,8 @@ app.post("/books", async (req, res) => {
         try {
                     
             const searchUrl = `https://www.amazon.ca/s?k=${encodeURIComponent(books[i].title)}`;
+
+            console.log(searchUrl)
 
             await page.goto(searchUrl, { waitUntil: 'domcontentloaded' })
 
@@ -78,11 +82,13 @@ app.post("/books", async (req, res) => {
 
             const book = bookList[1]
 
+            const price = await book.$eval('.a-price .a-offscreen', el => el.textContent.trim()).catch(() => 'N/A');
+
             const image = await book.$eval('.s-image', el => el.src).catch(() => 'N/A');
 
-            books[i] = {...books[i], image: image}
+            books[i] = {...books[i], image: image, price: price, url: searchUrl}
 
-            console.log(image)
+            console.log(book)
         } catch (err) {
             console.log(err)
         }
