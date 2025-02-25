@@ -13,7 +13,6 @@ function Content() {
       "genre" : [],
       "book" : []
     })
-    const text = useRef();
 
     async function serverFetch() {
 
@@ -35,16 +34,6 @@ function Content() {
       })
     }
 
-    async function fetchBookInfo(books) {
-      console.log(books)
-      const resp = await fetch("http://localhost:5000/booksInfo", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json" 
-        },
-        body: JSON.stringify({books: books})
-      })
-    }
 
 
     return (

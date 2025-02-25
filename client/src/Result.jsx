@@ -9,13 +9,7 @@ function Result(props) {
     const [accepted, setAccepted] = useState([])
     const [cardsLeft, setCardsLeft] = useState(props.suggestions.length)
 
-    // useEffect(() => {
 
-    //     if (cardsLeft <= 0) {
-
-    //     }
-    // }, [cardsLeft])
-    
 
     return (
         <>

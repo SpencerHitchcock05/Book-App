@@ -27,6 +27,7 @@ function Card(props) {
 
         card.addEventListener("mouseup", (e) => {
 
+            //when you let go return card to center
             if (mouseDown.current) {
                 setTranslation(0)
             }
@@ -37,11 +38,12 @@ function Card(props) {
 
         card.addEventListener("mousemove", (e) => {
             if (mouseDown.current) {
-
+                //difference between where your mouse is and where you clicked 
                 let trans = e.clientX - mouseDownLocation.current
 
                 setTranslation(trans)
                 
+                //if you swipe far enough make the card dissappear
                 if (Math.abs(trans) > disappearThreshold) {
                     setDisappearing(true)
                     mouseDown.current = false
@@ -71,7 +73,6 @@ function Card(props) {
                     <h2>{suggestion.title}</h2>
                     <h4>{suggestion.author}</h4>
                     <p>{suggestion.description}</p>
-                    {/* <img src={suggestion.image} alt="" /> */}
                 </div>
             </div>
         </div>
