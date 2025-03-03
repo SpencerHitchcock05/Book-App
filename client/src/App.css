@@ -135,7 +135,6 @@ body {
 
     border-radius: 10px;
 
-    animation: fade-down 2s infinite;
 
     user-select: none; 
     -webkit-user-select: none; 
@@ -181,6 +180,10 @@ body {
     padding-bottom: 30px;
     padding-left: 20px;
     margin: 20px;
+
+    animation: fade-down .5s forwards;
+
+    opacity: 0;
 }
 
 .accepted-content {

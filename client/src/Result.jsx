@@ -27,7 +27,7 @@ function Result(props) {
                     <h1>These are the books that peaked your interest</h1>
                     {accepted.map((suggestion, index) => {
                         return (
-                            <div className='accepted' key={index}>
+                            <div className='accepted' style={{animationDelay: `${index / 2}s`}} key={index}>
                                 <h1>{suggestion.title}</h1>
                                 <div className='accepted-content'>
                                     <img src={suggestion.image} alt="" />
