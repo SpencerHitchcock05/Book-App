@@ -110,7 +110,6 @@ body {
     padding: 10px 25px;
 }
 
-
 .card-container {
     position: absolute;
     width: 80%;
@@ -124,7 +123,7 @@ body {
 
 .card {
     height: 80vh;
-    max-width: 500px;
+    width: 500px;
 
     background-size: cover;
 
@@ -135,6 +134,8 @@ body {
     flex-direction: column;
 
     border-radius: 10px;
+
+    animation: fade-down 2s infinite;
 
     user-select: none; 
     -webkit-user-select: none; 
@@ -222,7 +223,15 @@ body {
 }
 
 
-  
+@keyframes fade-down {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 
 @keyframes spin {
     0% {
