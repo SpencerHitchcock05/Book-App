@@ -34,7 +34,7 @@ function Result(props) {
                                     <div className='accepted-text-container'>
                                         <h3 className='accepted-price'>{suggestion.price}</h3>
                                         <p className='accepted-text'>{suggestion.longDescription}</p>
-                                        <a className='accepted-link' href={suggestion.url}>Link to purchase</a>
+                                        <a className='accepted-link' href={suggestion.url} target='_blank'>Link to purchase</a>
                                     </div>
                                 </div>
                             </div>)

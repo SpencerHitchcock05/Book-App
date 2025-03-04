@@ -1,6 +1,6 @@
 :root {
-    --light-color: #3d1158;
-    --dark-color: #0d021f;
+    --light-color: #1c1158;
+    --dark-color: #07021f;
 }
 
 body {
@@ -128,6 +128,8 @@ body {
     background-size: cover;
 
     color: white;
+
+    border: 2px ridge var(--light-color);
 
     display: flex;
     justify-content: end;
