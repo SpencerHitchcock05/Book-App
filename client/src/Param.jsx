@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 
 
 
-function Params(props) {
+function Param(props) {
 
     const [types, setTypes] = useState([]);
     const genreRef = useRef()
@@ -61,4 +61,4 @@ function Params(props) {
     )
 }
 
-export default Params
+export default Param

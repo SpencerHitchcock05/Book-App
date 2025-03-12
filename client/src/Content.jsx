@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import Params from './Params.jsx';
+import ParamSlides from './ParamSlides.jsx';
 import Result from './Result.jsx';
 import LoadingIcon from './LoadingIcon.jsx'
 
@@ -43,8 +43,7 @@ function Content() {
 
             {(!suggestions && !searching) && <>
             <div id="content">
-                <Params type={"genre"} question={"which book genres you would like to see?:"} setPrompts={setPrompts}/>
-                <Params type={"book"} question={"which books have you enjoyed in the past?:"} setPrompts={setPrompts}/>
+                <ParamSlides setPrompts={setPrompts}/>
             </div>
             <div>
               <button className='prompt-button' id='search-button' type='button' onClick={serverFetch}>Search</button>

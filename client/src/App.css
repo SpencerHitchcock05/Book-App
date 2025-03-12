@@ -96,7 +96,15 @@ body {
 
 .param-input {
     font-size: 1.4rem;
-    width: 30vw
+    width: 30vw;
+    background-color: #02010f;
+    border: 1px ridge var(--light-color);
+    color: white;
+    border-radius: 3px;
+}
+
+.param-input:focus {
+    outline: 3px ridge #251775;
 }
 
 .prompt-button {
