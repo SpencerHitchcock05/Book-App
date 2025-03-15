@@ -10,7 +10,7 @@ function Param(props) {
     const genreRef = useRef()
 
     const type = props.type
-    
+    const final = props.final
 
     const addType = (e) => {
         e.preventDefault()
@@ -37,7 +37,7 @@ function Param(props) {
     return (
         <>
         
-        <div id="params">
+        <div className="params">
             <div className="user-input">
                 <div className="user-prompts">
                     {types.map((type, index) => {
