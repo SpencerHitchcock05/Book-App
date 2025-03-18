@@ -7,6 +7,7 @@ const ParamSlides = (props) => {
 
     const [index, setIndex] = useState(0);
     const setPrompts = props.setPrompts
+    const serverFetch = props.serverFetch
 
     const prompts = [
         <Param key={index} type={"genre"} question={"Which book genres do you like the most?"} setPrompts={setPrompts}/>,
@@ -27,7 +28,9 @@ const ParamSlides = (props) => {
         <>
             <div>
                 {prompts[index]}
-                <button className='prompt-button' onClick={handleNext}>Next</button>
+
+                {index < 3? <button className='prompt-button' onClick={handleNext}>Next</button> : <button className='prompt-button' id='search-button' type='button' onClick={serverFetch}>Search</button>}
+                
             </div>
 
         </>

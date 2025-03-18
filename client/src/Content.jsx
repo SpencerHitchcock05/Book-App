@@ -43,11 +43,9 @@ function Content() {
 
             {(!suggestions && !searching) && <>
             <div id="content">
-                <ParamSlides setPrompts={setPrompts}/>
+                <ParamSlides setPrompts={setPrompts} serverFetch={serverFetch}/>
             </div>
-            <div>
-              <button className='prompt-button' id='search-button' type='button' onClick={serverFetch}>Search</button>
-            </div>
+            
             </>}
 
             {searching && <LoadingIcon/>}
