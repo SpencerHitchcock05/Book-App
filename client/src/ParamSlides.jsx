@@ -26,7 +26,7 @@ const ParamSlides = (props) => {
 
     return (
         <>
-            <div>
+            <div className='param-slides-container'>
                 {prompts[index]}
 
                 {index < 3? <button className='prompt-button' onClick={handleNext}>Next</button> : <button className='prompt-button' id='search-button' type='button' onClick={serverFetch}>Search</button>}
