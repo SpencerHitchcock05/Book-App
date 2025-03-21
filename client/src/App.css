@@ -75,10 +75,11 @@ body {
     display: flex;
 
     flex-direction: column;   
+    align-items: center;
 }
 
 .param-text {
-    margin: 3px;
+    margin-bottom: 40px;
     font-size: 1.3rem;
 }
 
@@ -94,14 +95,16 @@ body {
 }
 
 .user-prompts {
+    width: 100%;
     display: flex;
 }
 
 .user-prompt {
     background-color: var(--light-color);
-    margin-right: 5px;
+    margin: 0 5px 10px 0;
     padding: 5px 10px;
     border-radius: 4px;
+    font-size: 1.15rem;
     color: white;
 }
 
@@ -112,6 +115,7 @@ body {
     border: 1px ridge var(--light-color);
     color: white;
     border-radius: 3px;
+    padding: 8px;
 }
 
 .param-input:focus {

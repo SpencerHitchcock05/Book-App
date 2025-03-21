@@ -11,7 +11,7 @@ const ParamSlides = (props) => {
 
     const prompts = [
         <div className='param-text'>ready to begin?</div>,
-        <Param type={"genre"} question={"Which book genres do you like the most?"} setPrompts={setPrompts}/>,
+        <Param type={"genre"} question={"Which book genres do you like most?"} setPrompts={setPrompts}/>,
         <Param type={"book"} question={"What are some books you have enjoyed in the past?"} setPrompts={setPrompts}/>,
         <Param type={"author"} question={"Which authors have do you like to read?"} setPrompts={setPrompts}/>,
         <Param type={"author"} question={"Which authors have do you like to read?"} setPrompts={setPrompts} final={true}/>

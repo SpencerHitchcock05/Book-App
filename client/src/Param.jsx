@@ -40,15 +40,16 @@ function Param(props) {
         
         <div className="params float-in">
             <div className="user-input">
-                <div className="user-prompts">
-                    {types.map((type, index) => {
-                        return (
-                            <div className="user-prompt" key={index}>{type}</div>
-                        )
-                    })}
-                </div>
+                
                 <form onSubmit={addType} className="param-form" method="post">
                     <label className="param-text" htmlFor="genre">{props.question}<br/></label>
+                    <div className="user-prompts">
+                        {types.map((type, index) => {
+                            return (
+                                <div className="user-prompt" key={index}>{type}</div>
+                            )
+                        })}
+                    </div>
                     <div className="param-form-input">
                         <input ref={genreRef} type="text" name="genre" className="param-input" />
                         <button className="prompt-button">Add {props.type}</button>
