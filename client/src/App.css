@@ -259,6 +259,18 @@ body {
     margin-bottom: 30px;
 }
 
+.fade-in {
+    animation: fade-in 2s;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
 @keyframes float-in {
     0% {

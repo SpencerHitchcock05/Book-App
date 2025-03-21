@@ -46,7 +46,7 @@ function Param(props) {
                     <div className="user-prompts">
                         {types.map((type, index) => {
                             return (
-                                <div className="user-prompt" key={index}>{type}</div>
+                                <div className="user-prompt fade-in" key={index}>{type}</div>
                             )
                         })}
                     </div>
