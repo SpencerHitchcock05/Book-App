@@ -15,8 +15,9 @@ function Param(props) {
     const addType = (e) => {
         e.preventDefault()
 
-        setTypes(prev => {return [...prev, genreRef.current.value]}) 
-        
+        if (genreRef.current.value) {
+            setTypes(prev => {return [...prev, genreRef.current.value]}) 
+        }
     }
 
     useEffect(() => {
@@ -37,7 +38,7 @@ function Param(props) {
     return (
         <>
         
-        <div className="params">
+        <div className="params float-in">
             <div className="user-input">
                 <div className="user-prompts">
                     {types.map((type, index) => {
@@ -47,7 +48,7 @@ function Param(props) {
                     })}
                 </div>
                 <form onSubmit={addType} className="param-form" method="post">
-                    <label htmlFor="genre">{props.question}<br/></label>
+                    <label className="param-text" htmlFor="genre">{props.question}<br/></label>
                     <div className="param-form-input">
                         <input ref={genreRef} type="text" name="genre" className="param-input" />
                         <button className="prompt-button">Add {props.type}</button>
