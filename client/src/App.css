@@ -30,9 +30,34 @@ body {
     font-family:'Times New Roman', Times, serif
 }
 
-.nav-link {
-
+#nav-links {
+    margin: 5%;
+    width: 20%;
 }
+
+.nav-link {
+    margin: 20%;
+    font-size: 1.3rem;
+}
+
+.nav-link:link {
+    color: white;
+  }
+  
+  /* visited link */
+  .nav-link:visited {
+    color: white;
+  }
+  
+  /* mouse over link */
+  .nav-link:hover {
+    color: white;
+  }
+  
+  /* selected link */
+  .nav-link:active {
+    color: white;
+  }
 
 #content-container {
     width: 100vw;
