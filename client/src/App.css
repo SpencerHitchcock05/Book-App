@@ -7,7 +7,7 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: var(--dark-color);
-    overflow: hidden;
+    overflow-x: hidden;
     margin: 0;
 }
 
@@ -86,14 +86,33 @@ body {
     z-index: -1;
 }
 
-.star {
-    border: 1px solid black;
+.star-sm {
     background-color: white;
-    width: 1.5px;
-    height: 1.5px;
-
+    width: 1px;
+    height: 1px;
     position: absolute;
 }
+
+.star-md {
+    background-color: white;
+    width: 5px;
+    height: 5px;
+
+    clip-path: polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%);
+    position: absolute;
+}
+
+.star-lg {
+    background-color: white;
+    width: 10px;
+    height: 10px;
+
+    clip-path: polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%);
+    position: absolute;
+
+    animation: star-rotate 3s ease-in-out infinite;
+}
+
 
 .param-slides-container {
     height: 60vh;
@@ -307,6 +326,20 @@ body {
 
 .fade-in {
     animation: fade-in 2s;
+}
+
+@keyframes star-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(60deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 @keyframes fade-in {
