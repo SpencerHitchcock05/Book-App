@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import ParamSlides from './ParamSlides.jsx';
 import Result from './Result.jsx';
 import LoadingIcon from './LoadingIcon.jsx'
+import Background from './Background.jsx'
 
 
 
@@ -40,6 +41,8 @@ function Content() {
         <>
         
         <div id="content-container">
+
+            <Background/>
 
             {(!suggestions && !searching) && <>
             <div id="content">

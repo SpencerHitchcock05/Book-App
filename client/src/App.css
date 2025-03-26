@@ -1,19 +1,19 @@
 :root {
-    --light-color: #1c1158;
-    --dark-color: #07021f;
+    --light-color: #151158;
+    --dark-color: #000008;
 }
 
 body {
     width: 100vw;
-    height: 100hv;
+    height: 100vh;
     background-color: var(--dark-color);
-    overflow-x: hidden;
+    overflow: hidden;
     margin: 0;
 }
 
 #nav-bar {
     width: 100%;
-    height: 75px;
+    height: 10vh;
     background-color: var(--light-color);
     color:white;
     border-bottom: 1px solid black;
@@ -61,17 +61,38 @@ body {
 
 #content-container {
     width: 100vw;
+    height: 90vh;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    position: relative;
 }
 
 #content {
     width: 80vw;
     min-height: 20vh;
     color: white;
+}
+
+#background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    
+    z-index: -1;
+}
+
+.star {
+    border: 1px solid black;
+    background-color: white;
+    width: 1.5px;
+    height: 1.5px;
+
+    position: absolute;
 }
 
 .param-slides-container {
