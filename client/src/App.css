@@ -61,19 +61,17 @@ body {
 
 #content-container {
     width: 100vw;
-    height: 90vh;
+    min-height: 90vh;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     position: relative;
 }
 
 #content {
     width: 80vw;
-    min-height: 20vh;
     color: white;
 }
 
