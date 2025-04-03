@@ -198,6 +198,8 @@ body {
     white-space: nowrap;  
     overflow: hidden;     
     text-overflow: ellipsis;
+
+    cursor: pointer;
 }
 
 .card-container {
@@ -315,6 +317,14 @@ body {
     height: 100px;
     background-color: var(--light-color);
     animation: spin 2s infinite;
+}
+
+#user-books-container {
+    width: 60vw;
+    height: 20vh;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    color: white;
 }
 
 .float-in {

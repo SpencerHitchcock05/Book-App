@@ -3,6 +3,7 @@ import ParamSlides from './ParamSlides.jsx';
 import Result from './Result.jsx';
 import LoadingIcon from './LoadingIcon.jsx'
 import Background from './Background.jsx'
+import UserBooks from './UserBooks.jsx'
 
 
 
@@ -56,6 +57,8 @@ function Content() {
             {suggestions && <>
               <Result suggestions={suggestions} />
             </>}
+
+            <UserBooks/>
             
         </div>
 
