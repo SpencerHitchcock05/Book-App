@@ -60,33 +60,34 @@ app.post("/books", async (req, res) => {
 
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36');
 
     for (let i = books.length - 1; i >= 0; i--) {
         try {
                     
-            const amazonUrl = `https://www.amazon.ca/s?k=${encodeURIComponent(books[i].title)}`;
+            // const amazonUrl = `https://www.amazon.ca/s?k=${encodeURIComponent(books[i].title)}`;
 
-            console.log(amazonUrl)
+            // console.log(amazonUrl)
 
-            await page.goto(amazonUrl, { waitUntil: 'domcontentloaded' })
+            // await page.goto(amazonUrl, { waitUntil: 'domcontentloaded' })
 
-            await page.waitForSelector('.s-main-slot');
+            // await page.waitForSelector('.s-main-slot');
 
-            const amazonList = await page.$$('.s-main-slot .s-result-item');
+            // const amazonList = await page.$$('.s-main-slot .s-result-item');
 
-            if (!amazonList) {
-                console.log('No results found');
-                await browser.close();
-                return null;
-            }
+            // if (!amazonList) {
+            //     console.log('No results found');
+            //     await browser.close();
+            //     return null;
+            // }
 
-            const book = amazonList[1]
+            // const book = amazonList[1]
 
-            const price = await book.$eval('.a-price .a-offscreen', el => el.textContent.trim()).catch(() => 'N/A');
+            // const price = await book.$eval('.a-price .a-offscreen', el => el.textContent.trim()).catch(() => 'N/A');
 
-            const image = await book.$eval('.s-image', el => el.src).catch(() => 'N/A');
+            // const image = await book.$eval('.s-image', el => el.src).catch(() => 'N/A');
 
-            books[i] = {...books[i], image: image, price: price, url: amazonUrl}
+            // books[i] = {...books[i], image: image, price: price, url: amazonUrl}
 
             const goodreadsUrl = `https://www.goodreads.com/search?utf8=%E2%9C%93&query=${encodeURIComponent(books[i].title)}`;
 
@@ -94,17 +95,18 @@ app.post("/books", async (req, res) => {
 
             await page.goto(goodreadsUrl, { waitUntil: 'load' })
 
-
             await page.screenshot({ path: 'debug.png', fullPage: true });
 
-            await page.waitForSelector('.tableList')
+            await page.waitForSelector('tbody')
             console.log('waited')
 
-            const goodreadsList = page.$$('.tableList tr')
+            const goodreadsBook = await page.$('tbody tr')
 
-            console.log(goodreadsList)
+            const rating = await goodreadsBook.$eval('.minirating', el => el.textContent.trim().substring(0,4)).catch(() => 'N/A')
 
-            console.log(book)
+            console.log(rating)
+
+            //console.log(book)
         } catch (err) {
             console.log(err)
         }
