@@ -65,29 +65,28 @@ app.post("/books", async (req, res) => {
     for (let i = books.length - 1; i >= 0; i--) {
         try {
                     
-            // const amazonUrl = `https://www.amazon.ca/s?k=${encodeURIComponent(books[i].title)}`;
+            const amazonUrl = `https://www.amazon.ca/s?k=${encodeURIComponent(books[i].title)}`;
 
-            // console.log(amazonUrl)
+            console.log(amazonUrl)
 
-            // await page.goto(amazonUrl, { waitUntil: 'domcontentloaded' })
+            await page.goto(amazonUrl, { waitUntil: 'domcontentloaded' })
 
-            // await page.waitForSelector('.s-main-slot');
+            await page.waitForSelector('.s-main-slot');
 
-            // const amazonList = await page.$$('.s-main-slot .s-result-item');
+            const amazonList = await page.$$('.s-main-slot .s-result-item');
 
-            // if (!amazonList) {
-            //     console.log('No results found');
-            //     await browser.close();
-            //     return null;
-            // }
+            if (!amazonList) {
+                console.log('No results found');
+                await browser.close();
+                return null;
+            }
 
-            // const book = amazonList[1]
+            const amazonBook = amazonList[1]
 
-            // const price = await book.$eval('.a-price .a-offscreen', el => el.textContent.trim()).catch(() => 'N/A');
+            const price = await amazonBook.$eval('.a-price .a-offscreen', el => el.textContent.trim()).catch(() => 'N/A');
 
-            // const image = await book.$eval('.s-image', el => el.src).catch(() => 'N/A');
+            const image = await amazonBook.$eval('.s-image', el => el.src).catch(() => 'N/A');
 
-            // books[i] = {...books[i], image: image, price: price, url: amazonUrl}
 
             const goodreadsUrl = `https://www.goodreads.com/search?utf8=%E2%9C%93&query=${encodeURIComponent(books[i].title)}`;
 
@@ -106,7 +105,9 @@ app.post("/books", async (req, res) => {
 
             console.log(rating)
 
-            //console.log(book)
+            books[i] = {...books[i], image: image, price: price, url: amazonUrl, rating: rating}
+
+
         } catch (err) {
             console.log(err)
         }

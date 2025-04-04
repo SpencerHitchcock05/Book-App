@@ -72,6 +72,7 @@ function Card(props) {
                 <div className="card-content">
                     <h2>{suggestion.title}</h2>
                     <h4>{suggestion.author}</h4>
+                    <h4>{suggestion.rating}</h4>
                     <p>{suggestion.description}</p>
                 </div>
             </div>
