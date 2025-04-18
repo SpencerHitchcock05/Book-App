@@ -246,6 +246,32 @@ body {
     border-radius: 10px;
 }
 
+.rating-container {
+    display: flex;
+    align-items: center;
+}
+
+.five-star-container {
+    width: 20%;
+    position: relative;
+    display: flex;
+    background-color: var(--light-color);
+
+    justify-content: end;
+}
+
+.five-star {
+    width: 100%;
+    position: absolute;
+}
+
+.five-star-blocker {
+    background-color: var(--light-color);
+    width: 50%;
+    height: 20px;
+    z-index: 1;
+}
+
 .d-none {
     display: none;
 }
