@@ -85,7 +85,7 @@ app.post("/books", async (req, res) => {
 
             const price = await amazonBook.$eval('.a-price .a-offscreen', el => el.textContent.trim()).catch(() => 'N/A');
 
-            const image = await amazonBook.$eval('.s-image', el => el.src).catch(() => 'N/A');
+            const image = await amazonBook.$eval('.s-image', el => el.src).catch(() => '');
 
 
             const goodreadsUrl = `https://www.goodreads.com/search?utf8=%E2%9C%93&query=${encodeURIComponent(books[i].title)}`;

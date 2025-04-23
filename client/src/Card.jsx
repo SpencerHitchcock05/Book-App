@@ -76,7 +76,7 @@ function Card(props) {
                     <div className="rating-container">
                         <div className="five-star-container">  
                             <img className="five-star" src={fiveStar} alt="five star rating" />
-                            <div className="five-star-blocker"></div> 
+                            <div className="five-star-blocker" style={{width: `${(1 - suggestion.rating / 5) * 100}%`}}></div> 
                         </div>
                         <h4>{suggestion.rating}</h4>
                     </div>
