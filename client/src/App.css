@@ -95,6 +95,11 @@ body {
     position: absolute;
 }
 
+.falling-star {
+
+    position: absolute;
+}
+
 .star-sm {
     background-color: white;
     width: 1px;

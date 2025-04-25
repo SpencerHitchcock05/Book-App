@@ -10,9 +10,7 @@ const Background = () => {
 
     useEffect(() => {
 
-        document.addEventListener('mousemove', (e) => {
-            console.log(e)
-        })
+ 
 
         const tempStars = []
 
