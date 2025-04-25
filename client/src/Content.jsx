@@ -58,7 +58,7 @@ function Content() {
               <Result suggestions={suggestions} />
             </>}
 
-            <UserBooks/>
+            
             
         </div>
 

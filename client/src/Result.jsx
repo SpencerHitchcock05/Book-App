@@ -31,7 +31,7 @@ function Result(props) {
                             <div className='accepted' style={{animationDelay: `${index / 2}s`}} key={index}>
                                 <h1>{suggestion.title}</h1>
                                 <div className='accepted-content'>
-                                    <img src={suggestion.image} alt="" />
+                                    <img src={suggestion.image} alt="" style={{flexShrink: 0}} />
                                     <div className='accepted-text-container'>
                                         <h3 className='accepted-price'>{suggestion.price}</h3>
                                         <div className="rating-container">

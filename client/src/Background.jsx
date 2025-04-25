@@ -10,6 +10,10 @@ const Background = () => {
 
     useEffect(() => {
 
+        document.addEventListener('mousemove', (e) => {
+            console.log(e)
+        })
+
         const tempStars = []
 
         for (let i = 0; i < 100; i++) {
@@ -23,7 +27,9 @@ const Background = () => {
 
     return (
         <>
-            <div  id='background'>
+
+
+            <div id='background'>
 
                 {stars.map((star, key) => {
                     return (<Star key={key} index={star} x={star.x} y={star.y} starType={star.starType}/>)
