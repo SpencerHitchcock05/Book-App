@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import FallingStar from "./FallingStar.jsx"
 
 
 function Cursor() {
 
     const [coordinates, setCoordinate] = useState([0,0])
+    const [stars, setStars] = useState([])
 
     useEffect(() => {
         document.addEventListener('mousemove', (e) => {
             setCoordinate([e.x,e.y])
+
+            setStars(prev => ([...prev, <FallingStar/>]));
+            console.log(stars)
 
         })
     }, [])
