@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from "react";
 function FallingStar(props) {
 
     const [drop, setDrop] = useState(0)
-    const star = useRef()
 
     const x = props.x;
     const y = props.y;
@@ -31,7 +30,7 @@ function FallingStar(props) {
 
     return (
         <>
-            {drop < 49 && <div ref={star} className="star-lg" style={{left: `${x}px`, top: `${y + drop}px`}}></div>}
+            {drop < 49 && <div className="star-lg falling-star" style={{left: `${x}px`, top: `${y + drop}px`}}></div>}
         </>
     )
 }

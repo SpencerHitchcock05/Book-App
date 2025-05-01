@@ -95,10 +95,6 @@ body {
     position: absolute;
 }
 
-.falling-star {
-
-    position: absolute;
-}
 
 .star-sm {
     background-color: white;
@@ -127,6 +123,9 @@ body {
     animation: star-rotate 3s ease-in-out infinite;
 }
 
+.falling-star {
+    animation: fade-out .7s forwards;
+}
 
 .param-slides-container {
     height: 60vh;
@@ -403,6 +402,15 @@ body {
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
 
