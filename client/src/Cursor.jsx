@@ -11,7 +11,9 @@ function Cursor() {
         document.addEventListener('mousemove', (e) => {
             setCoordinate([e.x,e.y])
 
-            setStars(prev => ([...prev, <FallingStar/>]));
+            if (Math.random() > 0.9) {
+                setStars(prev => ([...prev, <FallingStar x={e.x} y={e.y}/>]));
+            }
             console.log(stars)
 
         })
@@ -22,6 +24,7 @@ function Cursor() {
         <>
             <div id='cursor' style={{top: coordinates[1], left: coordinates[0]}}></div>
             <FallingStar x={coordinates[0]} y={coordinates[1]}/>
+            {stars}
         </>
 
     )
