@@ -14,20 +14,22 @@ function Cursor() {
         document.addEventListener('mousemove', (e) => {
             setCoordinate([e.x,e.y])
 
-            if (count % 10 == 0) {
+            if (count % 5 == 0) {
                 setStars(prev => {
 
                     const arr = [...prev];
 
-                    if (Math.random() > 0.5) {
-                        arr.push(<FallingStar x={e.x + Math.random() * 20 - 10} y={e.y + Math.random() * 20 - 10}/>)
+                    if (count % 3 == 0) {
+                        arr.push(<FallingStar type={Math.random()} x={e.x + Math.random() * 20 - 10} y={e.y + Math.random() * 20 - 10}/>)
                     }
 
-                    if (Math.random() > 0.5) {
-                        arr.push(<FallingStar x={e.x + Math.random() * 20 - 10} y={e.y + Math.random() * 20 - 10}/>)
+                    if (count % 5 == 0) {
+                        arr.push(<FallingStar type={Math.random()} x={e.x + Math.random() * 20 - 10} y={e.y + Math.random() * 20 - 10}/>)
                     }
 
-
+                    if (count % 2 == 0) {
+                        arr.push(<FallingStar type={Math.random()} x={e.x + Math.random() * 20 - 10} y={e.y + Math.random() * 20 - 10}/>)
+                    }
                     
 
                     return (arr)
