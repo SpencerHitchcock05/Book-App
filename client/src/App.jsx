@@ -1,17 +1,19 @@
 import { useRef, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css';
-import Nav from './Nav.jsx';
-import Content from "./Content.jsx"
-import Cursor from "./Cursor.jsx"
+import Home from './Home.jsx';
+import Nav from './Nav';
 
 function App() {
 
   return (
-    <>
-      <Cursor/>
-      <Nav/>
-      <Content/>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/nav" element={<Nav/>}/>
+
+      </Routes>
+    </BrowserRouter>
   )
 }
 
