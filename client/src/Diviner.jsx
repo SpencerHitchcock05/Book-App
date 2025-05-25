@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Content from "./Content";
 import Cursor from "./Cursor";
 import Nav from "./Nav";
@@ -6,16 +5,18 @@ import Nav from "./Nav";
 
 
 
-function Home() {
+
+
+function Diviner() {
 
 
     return (
         <>
             <Nav/>
-            <Link to="/diviner">diviner</Link>
+            <Content/>
             <Cursor/>
         </>
     )
 }
 
-export default Home
+export default Diviner

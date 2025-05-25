@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css';
 import Home from './Home.jsx';
-import Nav from './Nav';
+import Diviner from './diviner.jsx';
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/nav" element={<Nav/>}/>
+        <Route path="/diviner" element={<Diviner/>}/>
 
       </Routes>
     </BrowserRouter>
