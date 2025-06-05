@@ -13,7 +13,9 @@ function Home() {
         <>
             <Nav/>
             <Background/>
-            <Link to="/diviner">diviner</Link>
+            <div className="home-container flex justify-center items-center">
+                <Link to="/diviner">diviner</Link>
+            </div>
             <Cursor/>
         </>
     )
