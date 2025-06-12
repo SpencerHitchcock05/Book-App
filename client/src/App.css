@@ -5,6 +5,11 @@
     --dark-color: #000008;
 }
 
+@theme {
+    --color-light-color: #151158;
+    --color-dark-color: #000008;
+}
+
 body {
     width: 100vw;
     height: 100vh;
