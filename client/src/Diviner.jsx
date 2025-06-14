@@ -24,13 +24,15 @@ function Diviner() {
     
           setSearching(true);
     
-          const resp = await fetch("http://localhost:5000/books", {
+          const resp = await fetch("http://localhost:5000/books/getBooks", {
             method: "POST",
             headers: {
               "Content-Type": "application/json" 
             },
             body: JSON.stringify({text: prompts})
           })
+
+          console.log(resp)
     
           const data = resp.json()
     
