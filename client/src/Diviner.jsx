@@ -5,7 +5,7 @@ import Nav from "./Nav";
 import ParamSlides from './ParamSlides.jsx';
 import Result from './Result.jsx';
 import LoadingIcon from './LoadingIcon.jsx'
-import UserBooks from './UserBooks.jsx'
+import axios from 'axios';
 
 
 
@@ -24,22 +24,15 @@ function Diviner() {
     
           setSearching(true);
     
-          const resp = await fetch("http://localhost:5000/books/getBooks", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json" 
-            },
-            body: JSON.stringify({text: prompts})
-          })
+          const response = await axios.post("http://localhost:5000/books/getBooks", {text: prompts})
 
-          console.log(resp)
     
-          const data = resp.json()
+          const data = response.data
     
-          data.then(resp => {
-            setSearching(false)
-            setSuggestions(resp)
-          })
+          
+          setSearching(false)
+          setSuggestions(data)
+         
         }
     
 
