@@ -38,8 +38,6 @@ function Cursor() {
 
             count++;
 
-            console.log(stars)
-
         })
     }, [])
     

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import fiveStar from './assets/fivestar.png'
+import fiveStar from '../assets/fivestar.png'
 
 
 function Card(props) {

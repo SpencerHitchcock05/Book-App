@@ -1,10 +1,10 @@
 import { useState, useRef } from 'react';
-import Background from "./Background";
-import Cursor from "./Cursor";
-import Nav from "./Nav";
-import ParamSlides from './ParamSlides.jsx';
-import Result from './Result.jsx';
-import LoadingIcon from './LoadingIcon.jsx'
+import Background from "../components/Background.jsx";
+import Cursor from "../components/Cursor.jsx";
+import Nav from "../components/Nav.jsx";
+import ParamSlides from '../components/ParamSlides.jsx';
+import Result from '../components/Result.jsx';
+import LoadingIcon from '../components/LoadingIcon.jsx'
 import axios from 'axios';
 
 
@@ -21,15 +21,10 @@ function Diviner() {
         })
     
         async function serverFetch() {
-    
           setSearching(true);
-    
           const response = await axios.post("http://localhost:5000/books/getBooks", {text: prompts})
-
-    
           const data = response.data
     
-          
           setSearching(false)
           setSuggestions(data)
          

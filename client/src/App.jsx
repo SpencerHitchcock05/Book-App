@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css';
-import Home from './Home.jsx';
-import Diviner from './diviner.jsx';
+import './css/App.css';
+import Home from './pages/Home.jsx';
+import Diviner from './pages/Diviner.jsx';
 
 function App() {
 

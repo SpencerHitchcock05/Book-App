@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Card from './Card.jsx'
-import fiveStar from "./assets/fivestar.png"
+import fiveStar from "../assets/fivestar.png"
 
 
 
