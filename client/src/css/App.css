@@ -3,11 +3,14 @@
 :root {
     --light-color: #151158;
     --dark-color: #000008;
+    --lighter-color: #1c167b;
 }
 
 @theme {
-    --color-light-color: #151158;
-    --color-dark-color: #000008;
+    --color-light-color: var(--light-color);
+    --color-dark-color: var(--dark-color);
+    --color-text-color: #ffffff;
+    --color-lighter-color: var(--lighter-color)
 }
 
 body {
