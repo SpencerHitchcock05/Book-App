@@ -2,6 +2,7 @@ import express from 'express';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import cors from 'cors';
 import booksRoutes from './components/books/books.routes.js';
+import authRoutes from './components/auth/auth.routes.js';
 import dotenv from 'dotenv';
 
 dotenv.config()
@@ -18,6 +19,7 @@ const PORT = 5000;
 app.use(cors({origin: '*', methods: ['GET', 'POST']}));
 app.use(express.json());
 
+app.use('/users', authRoutes);
 app.use('/books', booksRoutes);
 
 

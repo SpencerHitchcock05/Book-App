@@ -6,10 +6,10 @@ import ParamSlides from '../components/ParamSlides.jsx';
 import Result from '../components/Result.jsx';
 import LoadingIcon from '../components/LoadingIcon.jsx'
 import axios from 'axios';
+import paths from '../paths.js';
 
 
-
-
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function Diviner() {
 
@@ -22,7 +22,7 @@ function Diviner() {
     
         async function serverFetch() {
           setSearching(true);
-          const response = await axios.post("http://localhost:5000/books/getBooks", {text: prompts})
+          const response = await axios.post(`${apiUrl}${paths.Books.Base}${paths.Books.GetBooks}`, {text: prompts})
           const data = response.data
     
           setSearching(false)
