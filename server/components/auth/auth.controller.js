@@ -40,3 +40,7 @@ export function logout(req, res) {
   // JWT logout is handled on the client
   res.json({ status: 'SUCCESSFUL' });
 }
+
+export function refresh(req, res) {
+  
+}
