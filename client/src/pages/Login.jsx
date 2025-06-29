@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import Nav from "../components/Nav";
 import Background from "../components/Background";
 import Cursor from "../components/Cursor";
+import paths from "../paths";
+import axios from "axios";
+
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function Login() {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
     confirmPassword: "",
   });
@@ -19,9 +23,9 @@ function Login() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.email || !formData.password) {
+    if (!formData.username || !formData.password) {
       alert("Please fill in all required fields.");
       return;
     }
@@ -32,10 +36,11 @@ function Login() {
 
     if (isLogin) {
       console.log("Logging in with", formData);
-      // Add login API call here
+      const response = await axios.post(`${apiUrl}${paths.Users.Base}${paths.Users.Login}`, {...formData})
+      console.log(response.data)
     } else {
       console.log("Signing up with", formData);
-      // Add sign-up API call here
+      axios.post(`${apiUrl}${paths.Users.Base}${paths.Users.Register}`, {...formData})
     }
   };
 
@@ -50,9 +55,9 @@ function Login() {
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
             <input
-                type="email"
-                name="email"
-                placeholder="Email"
+                type="text"
+                name="username"
+                placeholder="Username"
                 className="w-full px-4 py-2 text-text-color border border-white rounded-xl focus:outline-none focus:ring focus:ring-blue-200"
                 value={formData.email}
                 onChange={handleChange}

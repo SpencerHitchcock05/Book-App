@@ -5,9 +5,10 @@ import jwt from 'jsonwebtoken';
 export async function register(req, res) {
   const { username, password } = req.body;
   try {
+    //add check for if user exists
     const hashed = await bcrypt.hash(password, 10);
     await db.execute('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashed]);
-    res.status(201).json({ message: 'User registered' });
+    res.status(201).json({ status: 'SUCCESSFUL' });
   } catch (err) {
     res.status(500).json({ error: 'Registration failed', details: err.message });
   }
@@ -29,7 +30,7 @@ export async function login(req, res) {
       { expiresIn: '1h' }
     );
 
-    res.json({ message: 'Login successful', token });
+    res.json({ status: 'SUCCESSFUL', token });
   } catch (err) {
     res.status(500).json({ error: 'Login failed', details: err.message });
   }
@@ -37,5 +38,5 @@ export async function login(req, res) {
 
 export function logout(req, res) {
   // JWT logout is handled on the client
-  res.json({ message: 'Logged out' });
+  res.json({ status: 'SUCCESSFUL' });
 }
