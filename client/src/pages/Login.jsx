@@ -4,10 +4,13 @@ import Background from "../components/Background";
 import Cursor from "../components/Cursor";
 import paths from "../paths";
 import axios from "axios";
+import { UserContext } from "../context/userContext.jsx"
+import { useContext } from "react";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 function Login() {
+  const { setUser } = useContext(UserContext);
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -38,6 +41,7 @@ function Login() {
       console.log("Logging in with", formData);
       const response = await axios.post(`${apiUrl}${paths.Users.Base}${paths.Users.Login}`, {...formData})
       console.log(response.data)
+      setUser(...response.data.user)
     } else {
       console.log("Signing up with", formData);
       axios.post(`${apiUrl}${paths.Users.Base}${paths.Users.Register}`, {...formData})
