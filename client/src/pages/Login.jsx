@@ -98,6 +98,7 @@ function Login() {
                 {isLogin ? "Login" : "Sign Up"}
             </button>
             </form>
+            <p className="text-center text-sm mt-4 text-red-400">{error}</p>
             <p className="text-center text-sm mt-4 text-text-color">
             {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
             <button
