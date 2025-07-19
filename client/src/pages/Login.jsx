@@ -4,15 +4,14 @@ import Background from "../components/Background";
 import Cursor from "../components/Cursor";
 import paths from "../paths";
 import axios from "axios";
-import { UserContext } from "../context/userContext.jsx"
-import { useContext } from "react";
+import { useAuthHook } from "../hooks/useAuthHook.js"; 
 
-const apiUrl = import.meta.env.VITE_API_URL;
 
 function Login() {
-  const { setUser } = useContext(UserContext);
+  const { login, register } = useAuthHook();
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -29,22 +28,18 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.username || !formData.password) {
-      alert("Please fill in all required fields.");
+      setError("Please fill in all required fields.");
       return;
     }
     if (!isLogin && formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match.");
+      setError("Passwords do not match.");
       return;
     }
 
     if (isLogin) {
-      console.log("Logging in with", formData);
-      const response = await axios.post(`${apiUrl}${paths.Users.Base}${paths.Users.Login}`, {...formData})
-      console.log(response.data)
-      setUser(...response.data.user)
+      login({username: formData.username, password: formData.password})
     } else {
-      console.log("Signing up with", formData);
-      axios.post(`${apiUrl}${paths.Users.Base}${paths.Users.Register}`, {...formData})
+      register({username: formData.username, password: formData.password})
     }
   };
 
