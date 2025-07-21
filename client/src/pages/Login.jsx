@@ -3,12 +3,12 @@ import Nav from "../components/Nav";
 import Background from "../components/Background";
 import Cursor from "../components/Cursor";
 import paths from "../paths";
-import axios from "axios";
 import { useAuthHook } from "../hooks/useAuthHook.js"; 
-
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const { login, register } = useAuthHook();
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
@@ -37,9 +37,24 @@ function Login() {
     }
 
     if (isLogin) {
-      login({username: formData.username, password: formData.password})
+      const responseStatus = await login({username: formData.username, password: formData.password})
+      console.log("Login response status:", responseStatus);
+      if (responseStatus == 200) {
+        navigate("/");
+      } else if (responseStatus == 401) {
+        setError("Invalid username or password.");
+      } else if (responseStatus == 500) {
+        setError("An error occurred during login. Please try again later.");
+      }
     } else {
-      register({username: formData.username, password: formData.password})
+      const responseStatus = await register({username: formData.username, password: formData.password})
+      if (responseStatus == 201) {
+        navigate("/");
+      } else if (responseStatus == 401) {
+        setError("Invalid username or password.");
+      } else if (responseStatus == 500) {
+        setError("An error occurred during login. Please try again later.");
+      }
     }
   };
 

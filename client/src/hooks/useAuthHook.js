@@ -14,13 +14,18 @@ export const useAuthHook = () => {
     const login = async (data) => {
         console.log("Logging in with", data);
         const response = await axios.post(`${apiUrl}${paths.Users.Base}${paths.Users.Login}`, data)
-        console.log(response.data)
-        setUser(response.data.user)
+        if (response.status == 200) {
+            setUser(response.data.user)
+        }
+        return response.status
     }
 
      const register = async (data) => {
         const response = await axios.post(`${apiUrl}${paths.Users.Base}${paths.Users.Register}`, data)
-        setUser(response.data.user)
+        if (response.status == 201) {
+            setUser(response.data.user)
+        }
+        return response.status
     }
 
     return {

@@ -17,7 +17,7 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: var(--dark-color);
-    overflow-x: hidden;
+    overflow: hidden;
     margin: 0;
 }
 

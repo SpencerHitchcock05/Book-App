@@ -19,10 +19,10 @@ export async function login(req, res) {
   try {
     const [rows] = await db.execute('SELECT * FROM users WHERE username = ?', [username]);
     const user = rows[0];
-    if (!user) return res.status(401).json({ error: 'Invalid username or password' });
+    if (!user) return res.status(401).json({ status: 401, error: 'Invalid username or password' });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return res.status(401).json({ error: 'Invalid username or password' });
+    if (!valid) return res.status(401).json({ status: 401, error: 'Invalid username or password' });
 
     const token = jwt.sign(
       { id: user.id, username: user.username },
@@ -30,9 +30,9 @@ export async function login(req, res) {
       { expiresIn: '1h' }
     );
 
-    res.json({ status: 'SUCCESSFUL', token, user: {id: user.id, username: user.username} });
+    res.status(200).json({ status: 200, token, user: {id: user.id, username: user.username} });
   } catch (err) {
-    res.status(500).json({ error: 'Login failed', details: err.message });
+    res.status(500).json({ status: 500, details: err.message });
   }
 }
 
