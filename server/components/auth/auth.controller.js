@@ -5,12 +5,22 @@ import jwt from 'jsonwebtoken';
 export async function register(req, res) {
   const { username, password } = req.body;
   try {
-    //add check for if user exists
+    const [rows] = await db.execute('SELECT id, username FROM users WHERE username = ?', [username]);
+    if (rows.length > 0) {
+      return res.status(400).json({ status: 400, error: 'Username already exists' });
+    }
     const hashed = await bcrypt.hash(password, 10);
-    await db.execute('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashed]);
-    res.status(201).json({ status: 'SUCCESSFUL' });
+    const [user] = await db.execute('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashed]);
+    
+    const token = jwt.sign(
+      { id: user.insertId, username },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+    
+    return res.status(201).json({ status: 201, token, user: {id: user.insertId, username}});
   } catch (err) {
-    res.status(500).json({ error: 'Registration failed', details: err.message });
+    return res.status(500).json({ status: 500, error: 'Registration failed', details: err.message });
   }
 }
 
@@ -30,9 +40,9 @@ export async function login(req, res) {
       { expiresIn: '1h' }
     );
 
-    res.status(200).json({ status: 200, token, user: {id: user.id, username: user.username} });
+    return res.status(200).json({ status: 200, token, user: {id: user.id, username: user.username} });
   } catch (err) {
-    res.status(500).json({ status: 500, details: err.message });
+    return res.status(500).json({ status: 500, details: err.message });
   }
 }
 

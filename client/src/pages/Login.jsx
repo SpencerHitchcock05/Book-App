@@ -50,6 +50,8 @@ function Login() {
       const responseStatus = await register({username: formData.username, password: formData.password})
       if (responseStatus == 201) {
         navigate("/");
+      } else if (responseStatus == 400) {
+        setError("Username already exists. Please try a different username.");
       } else if (responseStatus == 401) {
         setError("Invalid username or password.");
       } else if (responseStatus == 500) {
