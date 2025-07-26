@@ -38,8 +38,24 @@ export const useAuthHook = () => {
         }
     }
 
+    const checkAuth = async () => {
+        try {
+            console.log("Checking authentication...");
+            const response = await axios.get(`${apiUrl}${paths.Users.Base}${paths.Users.CheckAuth}`, { withCredentials: true });
+            console.log("CheckAuth response:", response.data);
+            if (response.status == 200) {
+                setUser(response.data.user);
+            }
+            return response.status;
+        } catch (error) {
+            console.error("Login error:", error);
+            return error.status;
+        }
+    }
+
     return {
         login,
         register,
+        checkAuth,
     }
 }

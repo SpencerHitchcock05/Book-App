@@ -51,6 +51,15 @@ export function logout(req, res) {
   res.json({ status: 'SUCCESSFUL' });
 }
 
-export function refresh(req, res) {
-  
+export function checkAuth(req, res) {
+  console.log("Checking auth...");
+  const token = req.cookies.auth
+  console.log("Checking auth with token:", token);
+  if (!token) return res.status(401).json({ status: 401, error: 'No token provided' });
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) return res.status(401).json({ status: 401, error: 'Invalid token' });
+    
+    return res.status(200).json({ status: 200, user: { id: decoded.id, username: decoded.username } });
+  });
 }
