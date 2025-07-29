@@ -13,7 +13,7 @@ function Nav() {
         <>
             <nav id="nav-bar" className="">
                 <div id="nav-logo"><Link to='/'>Book Search</Link></div>
-                <div>{user && user.username}</div>
+                <div>{JSON.stringify(user)}</div>
             </nav>
         </>
     )

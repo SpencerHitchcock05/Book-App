@@ -12,8 +12,9 @@ export const useAuthHook = () => {
     
     const login = async (data) => {
         try {
-            const response = await axios.post(`${apiUrl}${paths.Users.Base}${paths.Users.Login}`, data)
+            const response = await axios.post(`${apiUrl}${paths.Users.Base}${paths.Users.Login}`, data, { withCredentials: true });
             if (response.status == 200) {
+                console.log("Login response:", response.data.user);
                 setUser(response.data.user)
             }
             return response.status
@@ -25,7 +26,7 @@ export const useAuthHook = () => {
 
      const register = async (data) => {
         try {
-            const response = await axios.post(`${apiUrl}${paths.Users.Base}${paths.Users.Register}`, data)
+            const response = await axios.post(`${apiUrl}${paths.Users.Base}${paths.Users.Register}`, data, { withCredentials: true })
             if (response.status == 200 || response.status == 201) {
                 console.log("Register response:", response.data);
                 setUser(response.data.user)
@@ -44,6 +45,7 @@ export const useAuthHook = () => {
             const response = await axios.get(`${apiUrl}${paths.Users.Base}${paths.Users.CheckAuth}`, { withCredentials: true });
             console.log("CheckAuth response:", response.data);
             if (response.status == 200) {
+                console.log("User authenticated:", response.data.user);
                 setUser(response.data.user);
             }
             return response.status;

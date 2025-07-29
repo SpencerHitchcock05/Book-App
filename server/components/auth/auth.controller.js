@@ -18,6 +18,12 @@ export async function register(req, res) {
       { expiresIn: '1h' }
     );
     
+    res.cookie('auth', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 3600000 // 1 hour
+    });
+
     return res.status(201).json({ status: 201, token, user: {id: user.insertId, username}});
   } catch (err) {
     return res.status(500).json({ status: 500, error: 'Registration failed', details: err.message });
@@ -40,6 +46,12 @@ export async function login(req, res) {
       { expiresIn: '1h' }
     );
 
+    res.cookie('auth', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 3600000 // 1 hour
+    });
+
     return res.status(200).json({ status: 200, token, user: {id: user.id, username: user.username} });
   } catch (err) {
     return res.status(500).json({ status: 500, details: err.message });
@@ -57,9 +69,8 @@ export function checkAuth(req, res) {
   console.log("Checking auth with token:", token);
   if (!token) return res.status(401).json({ status: 401, error: 'No token provided' });
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) return res.status(401).json({ status: 401, error: 'Invalid token' });
-    
-    return res.status(200).json({ status: 200, user: { id: decoded.id, username: decoded.username } });
-  });
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  console.log("Decoded token:", decoded);
+  if (!decoded) return res.status(401).json({ status: 401, error: 'Invalid token' });
+  return res.status(200).json({ status: 200, user: { id: decoded.id, username: decoded.username } });
 }

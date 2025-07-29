@@ -10,6 +10,7 @@ import { useAuthHook } from "./hooks/useAuthHook.js";
 function App() {
 
   const { checkAuth } = useAuthHook();
+  // const { checkAuth } = () => {};
 
   return (
     <UserProvider>
