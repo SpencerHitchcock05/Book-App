@@ -1,28 +1,37 @@
 import { RouterProvider } from 'react-router-dom'
 import './css/App.css';
-import { UserProvider } from './context/userContext.jsx';
-import { createBrowserRouter } from "react-router-dom";
+import { UserProvider, UserContext } from './context/userContext.jsx';
+import { createBrowserRouter, useLoaderData } from "react-router-dom";
 import Home from './pages/Home.jsx';
 import Diviner from './pages/Diviner.jsx';
 import Login from './pages/Login.jsx';
 import { useAuthHook } from "./hooks/useAuthHook.js";
+import { useContext } from 'react';
+
+const AuthRedirector = ({ children }) => {
+  const authed = useLoaderData();
+  const { setUser } = useContext(UserContext);
+  if (authed) {
+    setUser(authed)
+  }
+  return authed ? children : <Navigate to={RoutePaths.Login} />;
+};
 
 function App() {
 
   const { checkAuth } = useAuthHook();
-  // const { checkAuth } = () => {};
 
   return (
     <UserProvider>
       <RouterProvider router={createBrowserRouter([
         {
           path: "/",
-          element: <Home />,
+          element: <AuthRedirector><Home /></AuthRedirector>,
           loader: checkAuth, 
         },
         {
           path: "/diviner",
-          element: <Diviner />,
+          element: <AuthRedirector><Diviner /></AuthRedirector>,
           loader: checkAuth, 
         },
         {
