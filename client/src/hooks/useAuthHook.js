@@ -51,6 +51,12 @@ export const useAuthHook = () => {
         }
     }
 
+    const logout = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}${paths.Users.Base}${paths.Users.Logout}`)
+        }
+    }
+
     return {
         login,
         register,
