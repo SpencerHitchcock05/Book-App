@@ -59,18 +59,18 @@ export async function login(req, res) {
 }
 
 export function logout(req, res) {
-  // JWT logout is handled on the client
+  res.clearCookie('auth', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+  })
   res.json({ status: 'SUCCESSFUL' });
 }
 
 export function checkAuth(req, res) {
-  console.log("Checking auth...");
   const token = req.cookies.auth
-  console.log("Checking auth with token:", token);
   if (!token) return res.status(401).json({ status: 401, error: 'No token provided' });
 
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  console.log("Decoded token:", decoded);
   if (!decoded) return res.status(401).json({ status: 401, error: 'Invalid token' });
   return res.status(200).json({ status: 200, user: { id: decoded.id, username: decoded.username } });
 }
