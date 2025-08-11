@@ -1,6 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import puppeteer from 'puppeteer';
 import dotenv from 'dotenv';
+import db from '../../db/connection.js';
 
 dotenv.config();
 
@@ -106,10 +107,20 @@ export const getBooks = async (req, res) => {
     }
 
     await browser.close()
-
-    
+ 
     console.log(books)
 
     res.json(books);
 
+}
+
+export const updateUserBooks = async (req, res) => {
+    const { userId, books } = req.body
+
+    const [rows] = await db.execute('SELECT title, author FROM user_books WHERE user_id = ?', [userId]);
+    
+    books.forEach(async book => {
+        await db.execute('INSERT INTO user_books (user_id, title, author, description, image, rating, url) VALUES (?,?,?,?,?,?,?)', [userId, book.title, book.author, book.description, book.image, book.rating, book.url])
+    });
+    
 }

@@ -6,7 +6,6 @@ export const up = async function(knex) {
         table.string('title').notNullable();
         table.string('author');
         table.string('description');
-        table.string('long_description');
         table.string('image');
         table.decimal('rating');
         table.string('url');

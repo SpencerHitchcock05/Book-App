@@ -9,5 +9,6 @@ export default {
     Books: {
         Base: '/books',
         GetBooks: '/getBooks',
+        UpdateUserBooks: '/updateUserBooks'
     }
 }

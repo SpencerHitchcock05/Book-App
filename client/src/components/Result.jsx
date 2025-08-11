@@ -1,19 +1,35 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Card from './Card.jsx'
 import fiveStar from "../assets/fivestar.png"
+import { useBooksHook } from '../hooks/useBooksHook.js'
+import { UserContext } from '../context/userContext.jsx'
 
 
 
 
 function Result(props) {
 
-    const [accepted, setAccepted] = useState([])
+    const [accepted, setAccepted] = useState(props.suggestions)
     const [cardsLeft, setCardsLeft] = useState(props.suggestions.length)
+    const { user } = useContext(UserContext)
+    const { updateUserBooks } = useBooksHook()
 
+    const send = () => {
+        if (cardsLeft === 0 && user) {
+            updateUserBooks(user.id, accepted);
+        }
+    }
 
+    useEffect(() => {
+        if (cardsLeft === 0 && user) {
+            updateUserBooks(user.id, [{"book": "memem"}]);
+        }
+    }, [cardsLeft])
 
     return (
         <>
+
+        <button className='text-white' onClick={send}> BTTTON</button>
         
         <div id='content'>
             {(cardsLeft > 0) && <>
