@@ -28,7 +28,8 @@ function Nav() {
             <nav id="nav-bar" className="">
                 <div id="nav-logo"><Link to='/'>Book Search</Link></div>
                 <div>{user && user.username}</div>
-                <button onClick={handleLogout}>Logout</button>
+                {JSON.stringify(user)}
+                {user && <button onClick={handleLogout}>Logout</button>}
             </nav>
         </>
     )

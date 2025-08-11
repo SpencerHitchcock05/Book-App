@@ -9,12 +9,8 @@ import { useAuthHook } from "./hooks/useAuthHook.js";
 import { useContext } from 'react';
 
 const AuthRedirector = ({ children }) => {
-  const authed = useLoaderData();
-  const { setUser } = useContext(UserContext);
-  if (authed) {
-    setUser(authed)
-  }
-  return authed ? children : <Navigate to={RoutePaths.Login} />;
+  useLoaderData();
+  return children;
 };
 
 function App() {
