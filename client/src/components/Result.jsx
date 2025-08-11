@@ -12,17 +12,17 @@ function Result(props) {
     const [accepted, setAccepted] = useState(props.suggestions)
     const [cardsLeft, setCardsLeft] = useState(props.suggestions.length)
     const { user } = useContext(UserContext)
-    const { updateUserBooks } = useBooksHook()
+    const { addUserBooks } = useBooksHook()
 
     const send = () => {
         if (cardsLeft === 0 && user) {
-            updateUserBooks(user.id, accepted);
+            addUserBooks(user.id, accepted);
         }
     }
 
     useEffect(() => {
         if (cardsLeft === 0 && user) {
-            updateUserBooks(user.id, [{"book": "memem"}]);
+            addUserBooks(user.id, accepted);
         }
     }, [cardsLeft])
 

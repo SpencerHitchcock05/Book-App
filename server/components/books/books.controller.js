@@ -114,7 +114,7 @@ export const getBooks = async (req, res) => {
 
 }
 
-export const updateUserBooks = async (req, res) => {
+export const addUserBooks = async (req, res) => {
     const { userId, books } = req.body
 
     const [rows] = await db.execute('SELECT title, author FROM user_books WHERE user_id = ?', [userId]);
