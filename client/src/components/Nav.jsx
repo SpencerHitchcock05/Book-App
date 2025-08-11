@@ -29,8 +29,8 @@ function Nav() {
                 <div className="nav-logo-container">
                     <div id="nav-logo"><Link to='/'>Book Search</Link></div>
                 </div>
-                <div className="nav-content">
-                    <div>{user && user.username}</div>
+                <div className="nav-content flex justify-between m-12 gap-8">
+                    <div>{user ? `Welcome, ${user.username}` : 'Try logging in to access more features!'}</div>
                     {user && <button onClick={handleLogout}>Logout</button>}
                 </div>
             </nav>

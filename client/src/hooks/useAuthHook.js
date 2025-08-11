@@ -42,7 +42,7 @@ export const useAuthHook = () => {
             }
             return response.data.user;
         } catch (error) {
-            return error.status;
+            return undefined
         }
     }
 
