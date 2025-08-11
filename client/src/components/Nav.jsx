@@ -14,8 +14,8 @@ function Nav() {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const handleLogout = () => {
-        logout()
+    const handleLogout = async () => {
+        await logout()
         if (location.pathname == '/') {
             navigate(0)
         } else {
@@ -25,11 +25,14 @@ function Nav() {
 
     return (
         <>
-            <nav id="nav-bar" className="">
-                <div id="nav-logo"><Link to='/'>Book Search</Link></div>
-                <div>{user && user.username}</div>
-                {JSON.stringify(user)}
-                {user && <button onClick={handleLogout}>Logout</button>}
+            <nav id="nav-bar" className="flex justify-between">
+                <div className="nav-logo-container">
+                    <div id="nav-logo"><Link to='/'>Book Search</Link></div>
+                </div>
+                <div className="nav-content">
+                    <div>{user && user.username}</div>
+                    {user && <button onClick={handleLogout}>Logout</button>}
+                </div>
             </nav>
         </>
     )

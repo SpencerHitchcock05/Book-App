@@ -6,7 +6,6 @@ import Home from './pages/Home.jsx';
 import Diviner from './pages/Diviner.jsx';
 import Login from './pages/Login.jsx';
 import { useAuthHook } from "./hooks/useAuthHook.js";
-import { useContext } from 'react';
 
 const AuthRedirector = ({ children }) => {
   useLoaderData();
