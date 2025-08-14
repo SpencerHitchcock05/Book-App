@@ -114,13 +114,44 @@ export const getBooks = async (req, res) => {
 
 }
 
+function clean(input) {
+  return input.replace(/[\s\p{P}]+/gu, '').toLowerCase();
+}
+
 export const addUserBooks = async (req, res) => {
     const { userId, books } = req.body
 
-    const [rows] = await db.execute('SELECT title, author FROM user_books WHERE user_id = ?', [userId]);
+    try {
+        const [rows] = await db.execute('SELECT title, author FROM user_books WHERE user_id = ?', [userId]);
+        
+        await Promise.all(
+            books.map(async book => {
+                let duplicate = false;
+
+                for (const userBook of rows) {
+                    if (
+                        clean(userBook.title) === clean(book.title) ||
+                        clean(userBook.author) === clean(book.author)
+                    ) {
+                        duplicate = true;
+                        break;
+                    }
+                }
+
+                if (!duplicate) {
+                    await db.execute(
+                        'INSERT INTO user_books (user_id, title, author, description, image, rating, url) VALUES (?,?,?,?,?,?,?)',
+                        [userId, book.title, book.author, book.description, book.image, book.rating, book.url]
+                    );
+                }
+            })
+        );
+
+
+        res.status(201).json({data: "success"});
+    } catch(error) {
+        res.status(500).json({data: "failure"})
+    }
     
-    books.forEach(async book => {
-        await db.execute('INSERT INTO user_books (user_id, title, author, description, image, rating, url) VALUES (?,?,?,?,?,?,?)', [userId, book.title, book.author, book.description, book.image, book.rating, book.url])
-    });
     
 }

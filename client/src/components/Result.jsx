@@ -9,13 +9,15 @@ import { UserContext } from '../context/userContext.jsx'
 
 function Result(props) {
 
-    const [accepted, setAccepted] = useState(props.suggestions)
+    const [accepted, setAccepted] = useState([])
     const [cardsLeft, setCardsLeft] = useState(props.suggestions.length)
     const { user } = useContext(UserContext)
     const { addUserBooks } = useBooksHook()
 
     const send = () => {
+        console.log('sending')
         if (cardsLeft === 0 && user) {
+            console.log('send')
             addUserBooks(user.id, accepted);
         }
     }
