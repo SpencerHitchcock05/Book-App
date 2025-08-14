@@ -66,11 +66,12 @@ export function logout(req, res) {
   res.json({ status: 'SUCCESSFUL' });
 }
 
-export function checkAuth(req, res) {
+export function checkAuth(req, res, next) {
   const token = req.cookies.auth
   if (!token) return res.status(401).json({ status: 401, error: 'No token provided' });
 
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
   if (!decoded) return res.status(401).json({ status: 401, error: 'Invalid token' });
-  return res.status(200).json({ status: 200, user: { id: decoded.id, username: decoded.username } });
+  req.user = { id: decoded.id, username: decoded.username };
+  next()
 }
