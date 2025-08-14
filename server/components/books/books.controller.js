@@ -150,8 +150,18 @@ export const addUserBooks = async (req, res) => {
 
         res.status(201).json({data: "success"});
     } catch(error) {
-        res.status(500).json({data: "failure"})
+        res.status(500).json({data: "failure", error})
     }
-    
-    
+}
+
+export const getUserBooks = async (req, res) => {
+    const { userId } = req.body;
+
+    try {
+        const [rows] = await db.execute('SELECT title, author, description, image, rating, url FROM user_books WHERE user_id = ?', [userId]);
+
+        res.status(200).json(rows)
+    } catch (error) {
+        res.status(500).json({data: "failure", error})
+    }
 }

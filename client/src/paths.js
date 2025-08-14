@@ -9,6 +9,7 @@ export default {
     Books: {
         Base: '/books',
         GetBooks: '/getBooks',
-        AddUserBooks: '/addUserBooks'
+        AddUserBooks: '/addUserBooks',
+        GetUserBooks: '/getUserBooks'
     }
 }
