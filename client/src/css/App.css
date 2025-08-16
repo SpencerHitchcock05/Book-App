@@ -367,10 +367,8 @@ body {
 
 #user-books-container {
     width: 60vw;
-    height: 20vh;
-    background-color: var(--light-color);
-    border-radius: 10px;
-    color: white;
+    height: 50vh;
+    overflow-y: scroll;
 }
 
 .float-in {

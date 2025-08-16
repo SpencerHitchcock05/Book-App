@@ -4,10 +4,6 @@ import { UserContext } from "../context/userContext.jsx";
 import { useAuthHook } from "../hooks/useAuthHook.js";
 import { useNavigate, useLocation } from "react-router-dom";
 
-
-
-
-
 function Nav() {
     const { user } = useContext(UserContext);
     const { logout } = useAuthHook();
@@ -31,7 +27,8 @@ function Nav() {
                 </div>
                 <div className="nav-content flex justify-between m-12 gap-8">
                     <div>{user ? `Welcome, ${user.username}` : 'Try logging in to access more features!'}</div>
-                    {user && <button onClick={handleLogout}>Logout</button>}
+                    {user ? <button onClick={handleLogout}>Logout</button> : <Link to="/login" className="w-1/3 bg-light-color rounded-sm flex justify-center">login</Link>}
+                    
                 </div>
             </nav>
         </>

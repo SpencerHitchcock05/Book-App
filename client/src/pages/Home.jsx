@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Cursor from "../components/Cursor";
 import Nav from "../components/Nav";
 import Background from "../components/Background";
+import UserBooks from "../components/UserBooks";
 
 
 
@@ -13,17 +14,13 @@ function Home() {
         <>
             <Nav/>
             <Background/>
-            <div className="home-container flex justify-center items-center">
-                <Link to="/diviner" className="w-1/3 bg-light-color rounded-sm flex justify-center">
-                    <div className="text-white text-5xl px-24 py-8">
+            <div className="home-container flex flex-col justify-around items-center gap-12 mt-12">
+                <Link to="/diviner" className="w-1/3 border border-gray-300 flex justify-center">
+                    <div className="text-white text-3xl py-6">
                         diviner
                     </div>
                 </Link>
-                <Link to="/login" className="w-1/3 bg-light-color rounded-sm flex justify-center">
-                    <div className="text-white text-5xl px-24 py-8">
-                        login
-                    </div>
-                </Link>
+                <UserBooks/>
             </div>
             <Cursor/>
         </>

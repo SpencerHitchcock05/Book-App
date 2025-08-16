@@ -155,7 +155,7 @@ export const addUserBooks = async (req, res) => {
 }
 
 export const getUserBooks = async (req, res) => {
-    const { userId } = req.body;
+    const { userId } = req.query;
 
     try {
         const [rows] = await db.execute('SELECT title, author, description, image, rating, url FROM user_books WHERE user_id = ?', [userId]);
