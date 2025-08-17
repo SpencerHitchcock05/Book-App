@@ -31,7 +31,7 @@ const ParamSlides = (props) => {
                 <div key={index}>
                     {prompts[index]}
                 </div>
-                {index < 3? <button className='prompt-button' onClick={handleNext}>Next</button> : <button className='prompt-button' id='search-button' type='button' onClick={serverFetch}>Search</button>}
+                {index < 3? <button className='prompt-button text-white text-2xl text-center py-2 px-6 border-b-1 border-gray-400' onClick={handleNext}>Next</button> : <button className='prompt-button' id='search-button' type='button' onClick={serverFetch}>Search</button>}
                 
             </div>
 

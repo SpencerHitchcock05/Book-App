@@ -17,7 +17,7 @@ const UserBook = (props) => {
                 <button className={`w-5 ${open ? "scale-y-[-1]" : ""}`}><img src={Chevron} alt="" /></button>
             </div>
             { open &&
-            <div className="flex m-5">
+            <div className="flex m-5 justify-center flex-col sm:flex-row">
                 <img src={book.image} alt="" />
                 <p className="m-5">{book.description}
                     <div className="rating-container my-10">

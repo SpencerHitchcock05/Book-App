@@ -14,9 +14,9 @@ function Home() {
         <>
             <Nav/>
             <Background/>
-            <div className="home-container flex flex-col justify-around items-center gap-12 mt-12">
-                <Link to="/diviner" className="w-1/3 border border-gray-300 flex justify-center">
-                    <div className="text-white text-3xl py-6">
+            <div className="home-container flex flex-col justify-around items-center gap-12 mt-24">
+                <Link to="/diviner" className="border border-gray-300 flex justify-center">
+                    <div className="text-white text-3xl px-24 py-6">
                         diviner
                     </div>
                 </Link>
