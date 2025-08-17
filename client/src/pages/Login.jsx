@@ -110,7 +110,7 @@ function Login() {
             )}
             <button
                 type="submit"
-                className="w-full bg-lighter-color text-white py-2 rounded-xl hover:bg-blue-700 transition"
+                className="w-full bg-lighter-color text-white py-2 rounded-xl hover:bg-blue-800 transition"
             >
                 {isLogin ? "Login" : "Sign Up"}
             </button>
@@ -120,7 +120,7 @@ function Login() {
             {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
             <button
                 onClick={toggleMode}
-                className="text-blue-500 hover:underline"
+                className="text-blue-600 hover:underline"
             >
                 {isLogin ? "Sign up here" : "Log in here"}
             </button>

@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 :root {
-    --light-color: #151158;
+    --light-color: rgb(12, 21, 66);
+    --light-color-transparent: rgba(12, 21, 66, 0.5);
     --dark-color: #000008;
-    --lighter-color: #1c167b;
+    --lighter-color: #16207b;
 }
 
 @theme {
     --color-light-color: var(--light-color);
+    --color-light-color-transparent: var(--light-color-transparent);
     --color-dark-color: var(--dark-color);
     --color-text-color: #ffffff;
     --color-lighter-color: var(--lighter-color)
