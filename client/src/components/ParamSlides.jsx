@@ -6,22 +6,41 @@ import Param from './Param.jsx'
 const ParamSlides = (props) => {
 
     const [index, setIndex] = useState(0);
+    const [usePreferences, setUsePreferences] = useState(false);
+    const [hideHelp, setHideHelp] = useState(true);
     const setPrompts = props.setPrompts
     const serverFetch = props.serverFetch
 
+    const handleNext = () => {
+        setIndex(prev => Math.min(prev+1, 3))
+    }
+
+    const firstParam = (
+        <>
+            <div className=''>
+                <label className="param-text w-full flex justify-center">would you like recommendations based on your past preferences?</label>
+                <div className="flex justify-center gap-12 m-12 ">
+                    <button className='prompt-button flex-1 text-2xl text-center py-2 px-6 border-b-1 border-gray-400' value={true} onClick={() => {handleNext(); setUsePreferences(true)}}>Yes, use past preferences!</button>
+                    <button className='prompt-button flex-1 text-2xl text-center py-2 px-6 border-b-1 border-gray-400' value={true} onClick={handleNext}>No, start me fresh!</button>
+                </div>
+                <div className='w-full flex flex-col items-center justify-center'>
+                    <button onClick={() => setHideHelp(!hideHelp)} className='prompt-button text-2xl text-center py-2 px-6 border-b-1 border-gray-400'>?</button>
+                    <p className={`${hideHelp? 'hidden' : ''} text-center py-2 px-6 border-b-1 border-gray-400`}>Using your past preferences will base new suggestions off books you have already added to your bookshelf</p>
+                </div>
+            </div>
+        </>
+    )
+
     const prompts = [
         <div className='param-text'>ready to begin?</div>,
+        firstParam,
         <Param type={"genre"} question={"Which book genres do you like most?"} setPrompts={setPrompts}/>,
         <Param type={"book"} question={"What are some books you have enjoyed in the past?"} setPrompts={setPrompts}/>,
         <Param type={"author"} question={"Which authors have do you like to read?"} setPrompts={setPrompts}/>,
         <Param type={"author"} question={"Which authors have do you like to read?"} setPrompts={setPrompts} final={true}/>
     ]
 
-    const handleNext = () => {
-        console.log("bing")
-        setIndex(prev => Math.min(prev+1, 3))
-        console.log(index)
-    }
+ 
         
     
 
@@ -31,7 +50,16 @@ const ParamSlides = (props) => {
                 <div key={index}>
                     {prompts[index]}
                 </div>
-                {index < 3? <button className='prompt-button text-white text-2xl text-center py-2 px-6 border-b-1 border-gray-400' onClick={handleNext}>Next</button> : <button className='prompt-button' id='search-button' type='button' onClick={serverFetch}>Search</button>}
+                {(() => { 
+                        if (index == 1) {
+                            return
+                        } else if (index < 3) {
+                            return <button className='prompt-button text-white text-2xl text-center py-2 px-6 border-b-1 border-gray-400' onClick={handleNext}>Next</button>
+                        } else {
+                            return <button className='prompt-button' id='search-button' type='button' onClick={serverFetch}>Search</button>
+                        }
+                    })()
+                }
                 
             </div>
 
