@@ -11,6 +11,9 @@ const genAI = new GoogleGenerativeAI(apiKey);
 
 export const getBooks = async (req, res) => {
     const parameter = req.body.text;
+    const { userId } = req.query;
+
+    console.log(userId)
 
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", generation_config: {"response_mime_type": "application/json"} });
     
@@ -47,9 +50,6 @@ export const getBooks = async (req, res) => {
     const text = result.response.text()
     
     const books = JSON.parse(text.substring(7, text.length - 4));
-
-    console.log(books)
-
 
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
@@ -108,8 +108,6 @@ export const getBooks = async (req, res) => {
 
     await browser.close()
  
-    console.log(books)
-
     res.json(books);
 
 }

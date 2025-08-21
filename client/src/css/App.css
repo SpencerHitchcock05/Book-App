@@ -131,7 +131,6 @@ body {
 
 .param-slides-container {
     margin-top: 15vh;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -206,8 +205,8 @@ body {
     color: white;
 
     white-space: nowrap;  
-    overflow: hidden;     
-    text-overflow: ellipsis;
+    /* overflow: hidden;      */
+    /* text-overflow: ellipsis; */
 
     cursor: pointer;
 }

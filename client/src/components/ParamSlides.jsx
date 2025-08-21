@@ -25,7 +25,7 @@ const ParamSlides = (props) => {
                 </div>
                 <div className='w-full flex flex-col items-center justify-center'>
                     <button onClick={() => setHideHelp(!hideHelp)} className='prompt-button text-2xl text-center py-2 px-6 border-b-1 border-gray-400'>?</button>
-                    <p className={`${hideHelp? 'hidden' : ''} text-center py-2 px-6 border-b-1 border-gray-400`}>Using your past preferences will base new suggestions off books you have already added to your bookshelf</p>
+                    <p className={`${hideHelp? 'invisible' : ''} text-center pt-6 pb-2 px-6 border-b-1 border-gray-400`}>Using your past preferences will base new suggestions off books you have already added to your bookshelf</p>
                 </div>
             </div>
         </>
@@ -56,7 +56,7 @@ const ParamSlides = (props) => {
                         } else if (index < 3) {
                             return <button className='prompt-button text-white text-2xl text-center py-2 px-6 border-b-1 border-gray-400' onClick={handleNext}>Next</button>
                         } else {
-                            return <button className='prompt-button' id='search-button' type='button' onClick={serverFetch}>Search</button>
+                            return <button className='prompt-button' id='search-button' type='button' onClick={() => serverFetch(usePreferences)}>Search</button>
                         }
                     })()
                 }

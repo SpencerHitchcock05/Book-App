@@ -17,15 +17,25 @@ export const useBooksHook = () => {
 
     const getUserBooks = async (userId) => {
         try {
-            const books = await axios.get(`${apiUrl}${paths.Books.Base}${paths.Books.GetUserBooks}?userId=${userId}`, {withCredentials: true})
-            return books.data;
+            const response = await axios.get(`${apiUrl}${paths.Books.Base}${paths.Books.GetUserBooks}?userId=${userId}`, {withCredentials: true})
+            return response.data;
         } catch (error) {
             console.error("failed to get users books")
         }
     }
 
+    const getBooks = async (prompts, userId) => {
+        try {
+            const response = await axios.post(`${apiUrl}${paths.Books.Base}${paths.Books.GetBooks}${userId? `?userId=${userId}` : ''}`, {text: prompts})
+            return response.data;
+        } catch (error) {
+            console.error("failed to get books")
+        }
+    }
+
     return {
         addUserBooks,
-        getUserBooks
+        getUserBooks,
+        getBooks
     }
 }
