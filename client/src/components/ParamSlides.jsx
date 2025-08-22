@@ -12,7 +12,7 @@ const ParamSlides = (props) => {
     const serverFetch = props.serverFetch
 
     const handleNext = () => {
-        setIndex(prev => Math.min(prev+1, 3))
+        setIndex(prev => prev+1)
     }
 
     const firstParam = (
@@ -37,7 +37,7 @@ const ParamSlides = (props) => {
         <Param type={"genre"} question={"Which book genres do you like most?"} setPrompts={setPrompts}/>,
         <Param type={"book"} question={"What are some books you have enjoyed in the past?"} setPrompts={setPrompts}/>,
         <Param type={"author"} question={"Which authors have do you like to read?"} setPrompts={setPrompts}/>,
-        <Param type={"author"} question={"Which authors have do you like to read?"} setPrompts={setPrompts} final={true}/>
+        <Param type={"author"} question={"Which authors have do you like to read?"} setPrompts={setPrompts}/>
     ]
 
  
@@ -53,7 +53,7 @@ const ParamSlides = (props) => {
                 {(() => { 
                         if (index == 1) {
                             return
-                        } else if (index < 3) {
+                        } else if (index < prompts.length - 1) {
                             return <button className='prompt-button text-white text-2xl text-center py-2 px-6 border-b-1 border-gray-400' onClick={handleNext}>Next</button>
                         } else {
                             return <button className='prompt-button' id='search-button' type='button' onClick={() => serverFetch(usePreferences)}>Search</button>

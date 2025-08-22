@@ -13,20 +13,34 @@ export const getBooks = async (req, res) => {
     const parameter = req.body.text;
     const { userId } = req.query;
 
-    console.log(userId)
+    let userBooks;
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", generation_config: {"response_mime_type": "application/json"} });
-    
+    if (userId) {
+        try {
+            console.log(userId)
+            const [rows] = await db.execute('SELECT title, author FROM user_books WHERE user_id = ?', [userId]);
+            console.log(rows)
+            userBooks = rows
+        } catch (error) {
+            userBooks = undefined
+            console.error(error)
+        }  
+    }
+
+    console.log(userBooks)
+
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", generation_config: {"response_mime_type": "application/json"} });    
 
     const prompt = `
     
         You are giving book suggestions in an app based on the preferences of a user. 
         this user has already inputted what some of they're preferences are and they are the following
 
-        the user wants to see books that are from the following genres: ${parameter.genre}
+        ${parameter.genre ? `the user wants to see books that are from the following genres: ${parameter.genre}` : ''}
 
-        the user wants books that similar to the following books: ${parameter.book} 
+        ${parameter.book ? `the user wants books that similar to the following books: ${parameter.book}` : ''} 
 
+        ${userBooks ? `this is a list of books the user is already interested in, DO NOT recommend ANY of these books!: ${userBooks.map(book => `[${book.title}, ${book.author}] `)}` : ''}
 
         please give 10 to 20 recomendations based off of these parameters, try to make the books interesting and something that the user has not already read
 
@@ -44,6 +58,7 @@ export const getBooks = async (req, res) => {
     
     `;
 
+    console.log(prompt)
 
     const result = await model.generateContent(prompt);
 
@@ -87,10 +102,7 @@ export const getBooks = async (req, res) => {
 
             await page.goto(goodreadsUrl, { waitUntil: 'load' })
 
-            await page.screenshot({ path: 'debug.png', fullPage: true });
-
             await page.waitForSelector('tbody')
-            console.log('waited')
 
             const goodreadsBook = await page.$('tbody tr')
 
