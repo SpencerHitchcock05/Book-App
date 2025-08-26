@@ -22,8 +22,8 @@ function Nav() {
     return (
         <>
             <nav id="nav-bar" className="flex justify-between">
-                <div className="nav-logo-container">
-                    <div id="nav-logo"><Link to='/'>Book Search</Link></div>
+                <div className="nav-logo-container overflow-hidden m-5">
+                    <div id="nav-logo"><Link to='/'>judgeabookbyitscover.com</Link></div>
                 </div>
                 <div className="nav-content flex justify-between m-12 gap-8">
                     <div>{user ? `Welcome, ${user.username}` : 'Try logging in to access more features!'}</div>

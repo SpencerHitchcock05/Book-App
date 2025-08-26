@@ -8,7 +8,7 @@ const UserBook = (props) => {
     const book = props.book
 
     return <>
-        <div className="flex flex-col p-3 border-b-1 border-b-white" onClick={() => setOpen(!open)}>
+        <div className="flex flex-col p-3 border-b-1 border-b-white rounded-md" onClick={() => setOpen(!open)}>
             <div className="flex justify-between">
                 <div className="flex flex-col">
                     <p className="">{book.title}</p>

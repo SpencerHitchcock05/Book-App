@@ -6,7 +6,7 @@ const LoadingIcon = () => {
         <>
             <div id="loading-icon">
             </div>
-            <div style={{color: 'white'}}>Loading...</div>
+            <div className="text-white">Loading...</div>
         </>
     )
 }

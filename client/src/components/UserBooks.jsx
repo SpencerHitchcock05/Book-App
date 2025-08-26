@@ -24,7 +24,7 @@ const UserBooks = () => {
         <>
             <div id="user-books-container" className="text-white">
                 {userBooks && <>
-                    <h3>Your Books:</h3>
+                    <h3 className="text-2xl">Your Bookshelf:</h3>
                         {userBooks.map((book) => {
                             return <UserBook book={book}/>
                         })}

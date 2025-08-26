@@ -33,10 +33,10 @@ function Result(props) {
 
             {cardsLeft <= 0 && <>
                 <div className='results-accepted'>
-                    <h1>These are the books that peaked your interest</h1>
+                    <h1 className='text-3xl'>These books have been added to your Bookshelf</h1>
                     {accepted.map((suggestion, index) => {
                         return (
-                            <div className='accepted' style={{animationDelay: `${index / 2}s`}} key={index}>
+                            <div className='accepted border-b border-white' style={{animationDelay: `${index / 2}s`}} key={index}>
                                 <h1>{suggestion.title}</h1>
                                 <div className='accepted-content'>
                                     <img src={suggestion.image} alt="" style={{flexShrink: 0}} />

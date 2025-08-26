@@ -20,12 +20,12 @@ const ParamSlides = (props) => {
             <div className=''>
                 <label className="param-text w-full flex justify-center">would you like recommendations based on your past preferences?</label>
                 <div className="flex justify-center gap-12 m-12 ">
-                    <button className='prompt-button flex-1 text-2xl text-center py-2 px-6 border-b-1 border-gray-400' value={true} onClick={() => {handleNext(); setUsePreferences(true)}}>Yes, use past preferences!</button>
-                    <button className='prompt-button flex-1 text-2xl text-center py-2 px-6 border-b-1 border-gray-400' value={true} onClick={handleNext}>No, start me fresh!</button>
+                    <button className='prompt-button flex-1 text-2xl text-center py-2 px-6 border-b-1 border-gray-400 rounded-md' value={true} onClick={() => {handleNext(); setUsePreferences(true)}}>Yes, use past preferences!</button>
+                    <button className='prompt-button flex-1 text-2xl text-center py-2 px-6 border-b-1 border-gray-400 rounded-md' value={true} onClick={handleNext}>No, start me fresh!</button>
                 </div>
                 <div className='w-full flex flex-col items-center justify-center'>
-                    <button onClick={() => setHideHelp(!hideHelp)} className='prompt-button text-2xl text-center py-2 px-6 border-b-1 border-gray-400'>?</button>
-                    <p className={`${hideHelp? 'invisible' : ''} text-center pt-6 pb-2 px-6 border-b-1 border-gray-400`}>Using your past preferences will base new suggestions off books you have already added to your bookshelf</p>
+                    <button onClick={() => setHideHelp(!hideHelp)} className='prompt-button text-2xl text-center py-2 px-6 border-b-1 border-gray-400 rounded-md'>?</button>
+                    <p className={`${hideHelp? 'invisible' : ''} text-center pt-6 pb-2 px-6 border-b-1 border-gray-400 rounded-md`}>Using your past preferences will base new suggestions off books you have already added to your bookshelf</p>
                 </div>
             </div>
         </>
@@ -54,9 +54,9 @@ const ParamSlides = (props) => {
                         if (index == 1) {
                             return
                         } else if (index < prompts.length - 1) {
-                            return <button className='prompt-button text-white text-2xl text-center py-2 px-6 border-b-1 border-gray-400' onClick={handleNext}>Next</button>
+                            return <button className='prompt-button text-white text-2xl text-center py-2 px-6 border-b-1 border-gray-400 rounded-md' onClick={handleNext}>Next</button>
                         } else {
-                            return <button className='prompt-button' id='search-button' type='button' onClick={() => serverFetch(usePreferences)}>Search</button>
+                            return <button className='prompt-button text-white text-2xl text-center py-2 px-6 border-b-1 border-gray-400 rounded-md' id='search-button' type='button' onClick={() => serverFetch(usePreferences)}>Search</button>
                         }
                     })()
                 }
