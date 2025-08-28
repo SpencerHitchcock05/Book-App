@@ -36,8 +36,9 @@ const ParamSlides = (props) => {
         firstParam,
         <Param type={"genre"} question={"Which book genres do you like most?"} setPrompts={setPrompts}/>,
         <Param type={"book"} question={"What are some books you have enjoyed in the past?"} setPrompts={setPrompts}/>,
-        <Param type={"author"} question={"Which authors have do you like to read?"} setPrompts={setPrompts}/>,
-        <Param type={"author"} question={"Which authors have do you like to read?"} setPrompts={setPrompts}/>
+        <Param type={"author"} question={"Which authors do you like to read?"} setPrompts={setPrompts}/>,
+        <Param type={"age"} question={"What age group of books would you like"} setPrompts={setPrompts}/>,
+        <Param type={"misc"} question={"Do you have any other preferences?"} setPrompts={setPrompts}/>
     ]
 
  
