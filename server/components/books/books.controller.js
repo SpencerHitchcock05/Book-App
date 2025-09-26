@@ -32,7 +32,7 @@ export const getBooks = async (req, res) => {
 
     console.log(userBooks)
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", generation_config: {"response_mime_type": "application/json"} });    
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash", generation_config: {"response_mime_type": "application/json"} });    
 
     const prompt = `
 
