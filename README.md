@@ -1,6 +1,6 @@
 ## About The Project
 
-<img width="1280" alt="image" src="https://github.com/SpencerHitchcock05/Book-App/client/src/assets/Screenshot.png">
+![App Screenshot](client/src/assets/Screenshot.png)
 
 I made this project to solve a problem that I myself was having. Searching for good quality books always seemed more difficult than it really should be. The experience of finding books online usually ended up in two different places, that being either finding long lists of the "greatest books ever" where one list was indistinguishable from another or looking through lists of books that have recently come out and feeling a strong sense of recency bias.
 
