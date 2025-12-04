@@ -20,13 +20,23 @@ This app seeks to fix the issues i was having by tailoring what the user is look
 npm install
 ```
 
-2. In client run
+2.  Create database in MySql
+
+3. Create .env file in both client and server directories according to example.env files
+
+4. In server run
+
+``` sh
+npm run migrationDeploy
+```
+
+5. In client run
 
 ``` sh
 npm run dev
 ```
 
-3. In server run
+6. In server run
 
 ``` sh
 npm run start
